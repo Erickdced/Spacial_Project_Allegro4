@@ -339,7 +339,7 @@ int main()
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
 			
-			//cambio de mapa
+			//map changes
 			if(getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF)
 			{
 				mapa = 2;
@@ -358,7 +358,7 @@ int main()
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//Map changes
 			if (getpixel(choque2, player.hb[2], player.hb[3]) == 0x00FFFF)
 			{
 				player.hb[0] = 400;
@@ -395,7 +395,7 @@ int main()
 	    	{
 				masked_blit(personaje, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}	
-			//cambio de mapa
+			//Map changes
 			if(getpixel(choque3, player.hb[0], player.hb[3]) == 0x00FF00)
 			{
 				mapa = 2;
@@ -414,7 +414,7 @@ int main()
 	    	{
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//Map change
 			if(getpixel(choque4, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 2;
@@ -433,7 +433,7 @@ int main()
 	    	{
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//Map change
 			if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
 			{
 				mapa = 2;
@@ -458,7 +458,7 @@ int main()
 	    	{
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//Map Change
 			if(getpixel(choque6, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 7;
@@ -483,7 +483,7 @@ int main()
 	    	{
 				masked_blit(enemigo, buffer, enemy.anima[ek], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//Map change
 			if(getpixel(choque7, player.hb[2], player.hb[3]) == 0xFF0000)
 			{
 				mapa = 6;
