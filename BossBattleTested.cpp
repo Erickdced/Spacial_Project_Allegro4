@@ -13,13 +13,14 @@ struct player
   	int visdir[4];
   	int anima[3];
   	int atack[3];
-  	int menu[4];
+  	int money;
 };
 struct player player;
 struct player npc1;
 struct player enemy;
 struct player atack;
 struct player boss;
+
 //act of player 
 void playerValues ()
 {
@@ -163,7 +164,11 @@ void enemyDead ()
 	enemy.hp[1] = 0;
 	enemy.hp[2] = 0;
 	enemy.hp[3] = 0;
-	enemy.hp[4] = 0;
+	enemy.hp[4] = 0; 
+}
+void enemyLoot ()
+{
+			player.money += (rand() %	4) + 1;
 }
 void bossDead ()
 {
@@ -417,6 +422,7 @@ int main()
 	install_keyboard();
 	set_color_depth(32);
 	set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0);
+	srand(time(NULL));
 	//BMP declaration 
 	BITMAP *buffer = create_bitmap(800, 600);
 	BITMAP *hitbox = create_bitmap(800, 600);
@@ -454,6 +460,7 @@ int main()
 	//Variable declarations
 	clear_to_color(buffer, 0x000000);
 	int ax, ay, ex, ey, bx, by, k = 0, h = 0, eh = 0, i = 0, j = 0, bj = 0, aip = 0, talk = 0;
+	player.money = 0;
 	
 	for(i >= 0; i < 4; i++)
 	{
@@ -704,6 +711,7 @@ int main()
 				}
 				clear_bitmap(textos);
 			}
+			textprintf_ex(buffer, font, 20, 20, 0xffffff, 0x000000, "Oro: %i", player.money);
 			//change of Map
 			if(getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF)
 			{
@@ -1350,8 +1358,14 @@ int main()
 //******************enemy dead
 		if (enemy.hp[0] == 0)
 		{
-			enemyDead();
+			if(enemy.hb[0] != 0 && enemy.hb[1] != 0)
+			{
+				player.money += (rand() %	4) + 1;
+			}
+			enemyDead(); 
+			
 		}
+		
 //******************enemy dead
 		if (boss.hp[0] == 0)
 		{
