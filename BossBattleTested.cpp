@@ -711,28 +711,30 @@ int main()
 				}
 				clear_bitmap(textos);
 			}
-			textprintf_ex(buffer, font, 20, 20, 0xffffff, 0x000000, "Oro: %i", player.money);
 			//change of Map
 			if(getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF)
 			{
-				mapa = 2;
-				player.hb[0] = 420;
-				player.hb[1] = 560;
-				npc1.hb[0] = 413;
-				npc1.hb[1] = 492;
-				player.hp[0] = 32;
-				if(talk == 0)
+				if (talk == 1)
 				{
-					talk = 2;
-					enemy.hp[0] = 0;
-				}
-				if(talk == 1)
-				{
-					talk = 0;
-					j = 0;
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 272;
-					enemy.hb[1]= 15;
+					mapa = 2;
+					player.hb[0] = 420;
+					player.hb[1] = 560;
+					npc1.hb[0] = 413;
+					npc1.hb[1] = 492;
+					player.hp[0] = 32;
+					if(talk == 0)
+					{
+						talk = 2;
+						enemy.hp[0] = 0;
+					}
+					if(talk == 1)
+					{
+						talk = 0;
+						j = 0;
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 272;
+						enemy.hb[1]= 15;
+					}
 				}
 			}
 		}
@@ -1317,6 +1319,8 @@ int main()
 		rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
 		rectfill(buffer, boss.hp[1], boss.hp[2], boss.hp[1] + boss.hp[0], boss.hp[4], 0xb70909); // life bar of boss
 		rect(buffer, boss.hp[1], boss.hp[2], boss.hp[3], boss.hp[4], 0xffffff); // life bord of boss
+//******************************HUD******************************************************
+		textprintf_ex(buffer, font, 20, 20, 0xffffff, 0x000000, "Oro: %i", player.money);
 //********************MOVE UPDATE********************************************************
 		if(player.hb[3] == 0 && player.hb[4] == 0)
 		{
