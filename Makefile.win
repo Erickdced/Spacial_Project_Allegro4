@@ -1,33 +1,30 @@
-# Project: ProgramBase
+# Project: BossBattleTested
 # Makefile created by Dev-C++ 4.9.9.2
 
 CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
-RES  = ProgramBase_private.res
-OBJ  = ProgramBase.o $(RES)
-LINKOBJ  = ProgramBase.o $(RES)
+RES  = 
+OBJ  = BossBattleTested.o $(RES)
+LINKOBJ  = BossBattleTested.o $(RES)
 LIBS =  -L"C:/Users/erick/Dev-Cpp/lib" -mwindows -lallegro-4.4.2-monolith-mt 
 INCS =  -I"C:/Users/erick/Dev-Cpp/include" 
 CXXINCS =  -I"C:/Users/erick/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Users/erick/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Users/erick/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Users/erick/Dev-Cpp/include/c++/3.4.2"  -I"C:/Users/erick/Dev-Cpp/include" 
-BIN  = ProgramBase.exe
+BIN  = BossBattleTested.exe
 CXXFLAGS = $(CXXINCS)  
 CFLAGS = $(INCS)  
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
-all: all-before ProgramBase.exe all-after
+all: all-before BossBattleTested.exe all-after
 
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
-	$(CPP) $(LINKOBJ) -o "ProgramBase.exe" $(LIBS)
+	$(CPP) $(LINKOBJ) -o "BossBattleTested.exe" $(LIBS)
 
-ProgramBase.o: ProgramBase.cpp
-	$(CPP) -c ProgramBase.cpp -o ProgramBase.o $(CXXFLAGS)
-
-ProgramBase_private.res: ProgramBase_private.rc 
-	$(WINDRES) -i ProgramBase_private.rc --input-format=rc -o ProgramBase_private.res -O coff 
+BossBattleTested.o: BossBattleTested.cpp
+	$(CPP) -c BossBattleTested.cpp -o BossBattleTested.o $(CXXFLAGS)
