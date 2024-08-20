@@ -1048,7 +1048,7 @@ int main()
 				textout_ex(textos, font, "   OH NOOOO  ", 0, 4, 0xffffff, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque3, player.hb[0], player.hb[3]) == 0x00FF00)
 			{
 				talk = -1;
@@ -1150,7 +1150,7 @@ int main()
 				}
 				clear_bitmap(textos);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque4, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 2;
@@ -1183,14 +1183,14 @@ int main()
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//map change
 			if((talk == 1) && (player.hp[0] > 0))
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
 			{
 				mapa = 2;
@@ -1235,14 +1235,14 @@ int main()
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//map change
 			if((talk == 1) && (player.hp[0] > 0))
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque6, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 7;
@@ -1289,7 +1289,7 @@ int main()
 				bossAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque7, player.hb[2], player.hb[3]) == 0xFF0000)
 			{
 				mapa = 6;
