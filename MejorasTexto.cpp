@@ -935,6 +935,7 @@ int main()
 				player.hb[1] = 550;
 				npc1.hb[0] = 264;
 				npc1.hb[1] = 141;
+				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -953,6 +954,7 @@ int main()
 				mapa = 4;
 				player.hb[0] = 25;
 				player.hb[1] = 100;
+				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -973,6 +975,7 @@ int main()
 				mapa = 5;
 				player.hb[0] = 14;
 				player.hb[1] = 411;
+				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1008,19 +1011,19 @@ int main()
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
-				textout_ex(textos, font, "ALGUIEN SALVEMEEE", 0, 4, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "ALGUIEN SALVEMEEE", 0, 4, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 138, 18);
 			}
 			if(enemy.hp[0] <= 0)
 			{
 				talk = 1;
-				textout_ex(textos, font, "  GRACIAAAS  ", 0, 4, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "  GRACIAAAS  ", 0, 4, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
 			if(player.hp[0] <= 0)
 			{
 				talk = 1;
-				textout_ex(textos, font, "   OH NOOOO  ", 0, 4, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "   OH NOOOO  ", 0, 4, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
 			//cambio de mapa
@@ -1032,6 +1035,7 @@ int main()
 				player.hb[1] = 10;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
+				player.hp[0] = 32;
 				clear_bitmap(textos);
 			}
 		}
@@ -1056,8 +1060,8 @@ int main()
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
-				textout_ex(textos, font, "¡cof!, ¡cof!…", 0, 4, 0x000000, 0xEFD3A6);
-				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "Â¡cof!, Â¡cof!Â…", 0, 4, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "Â¡Los derrotare!", 0, 14, 0x000000, 0xEFD3A6);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
 			}
 			//************Interact I*****************************************************
@@ -1120,6 +1124,7 @@ int main()
 				player.hb[1] = 555;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
+				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1162,12 +1167,14 @@ int main()
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
 				enemy.hp[0] = 0;
+				player.hp[0] = 32;
 			}
 			else if (getpixel(choque5, player.hb[2], player.hb[3]) == 0x00FF00)
 			{
 				mapa = 6;
 				player.hb[0] = 12;
 				player.hb[1] = 310;
+				player.hp[0] = 32;
 				/*if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
