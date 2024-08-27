@@ -1,20 +1,20 @@
 [Project]
-FileName=BossBattleTested.dev
-Name=BossBattleTested
+FileName=MejorasTexto.dev
+Name=Proyecto 1
 UnitCount=1
 Type=0
 Ver=1
 ObjFiles=
 Includes=
 Libs=
-PrivateResource=
+PrivateResource=MejorasTexto_private.rc
 ResourceIncludes=
 MakeIncludes=
 Compiler=
 CppCompiler=
 Linker=-lallegro-4.4.2-monolith-mt
 IsCpp=1
-Icon=BossBattleTested.ico
+Icon=MejorasTexto.ico
 ExeOutput=
 ObjectOutput=
 OverrideOutput=0
@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=
 
 [Unit1]
-FileName=BossBattleTested.cpp
+FileName=MejorasTexto.cpp
 CompileCpp=1
 Folder=
 Compile=1
