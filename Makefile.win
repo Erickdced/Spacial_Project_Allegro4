@@ -4,7 +4,7 @@
 CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
-RES  = 
+RES  = MejorasTexto_private.res
 OBJ  = MejorasTexto.o $(RES)
 LINKOBJ  = MejorasTexto.o $(RES)
 LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/Users/DELL E5430/Downloads/allegro/lib" -static-libgcc -lallegro -mwindows -lallegro-4.4.2-monolith-mt 
@@ -27,3 +27,6 @@ $(BIN): $(OBJ)
 
 MejorasTexto.o: MejorasTexto.cpp
 	$(CPP) -c MejorasTexto.cpp -o MejorasTexto.o $(CXXFLAGS)
+
+MejorasTexto_private.res: MejorasTexto_private.rc 
+	$(WINDRES) -i MejorasTexto_private.rc --input-format=rc -o MejorasTexto_private.res -O coff 

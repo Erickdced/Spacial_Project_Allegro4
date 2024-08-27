@@ -29,6 +29,7 @@ void playerValues ()
 	player.hp[2] = player.hb[1] - 8;  //lifebar y1 & lifebox y1
 	player.hp[3] = player.hp[1] + 32; //lifebox x2
 	player.hp[4] = player.hp[2] + 4;  //lifebox y2 & lifebar y2
+	
 	//weapon direction
 	if(player.direc == 0) // key s
 	{
@@ -475,6 +476,11 @@ int main()
  	BITMAP *ataque = load_bmp("Hit.bmp", NULL);
  	BITMAP *arma = load_bmp("Arma.bmp", NULL);
  	
+ 	//HUD elements 
+ 	BITMAP *icons = load_bmp("Icons.bmp", NULL);
+ 	BITMAP *pjicon = load_bmp("PJicon.bmp", NULL);
+ 	BITMAP *numbers = load_bmp("Numbers.bmp", NULL);
+ 	
 	//Variable declarations
 	clear_to_color(buffer, 0x000000);
 	int ax, ay, ex, ey, bx, by, k = 0, h = 0, eh = 0, i = 0, j = 0, bj = 0, aip = 0, talk = 0;
@@ -517,7 +523,7 @@ int main()
 	enemy.direc = 0;
 	boss.direc = 0;
 	player.hp[0] = 32;
-	player.hb[0] = 383;
+	player.hb[0] = 363;
 	player.hb[1] = 535;
 	enemy.hp[0] = 32;
 	enemy.hb[0] = 128;
@@ -527,9 +533,11 @@ int main()
 	boss.hb[1]= 253;
 	npc1.hb[0] = 468;
 	npc1.hb[1] = 272;
+	
 	j = 0;
 	int mapa = 1;
 	int letter = 8;
+	int number = 24;
 	
 	playerValues();
 	enemyValues();
@@ -613,13 +621,11 @@ int main()
 			player.hb[1] = ay;
 		}
 		if(mapa == 1)
-		{
 			if((getpixel(choque1, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque1, player.hb[2], player.hb[3])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
 			}
-		}
 		if(mapa == 2)
 			if((getpixel(choque2, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque2, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
@@ -633,11 +639,13 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 4)
+		{
 			if((getpixel(choque4, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque4, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
 			}
+		}
 		if(mapa == 5)
 			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
@@ -664,11 +672,14 @@ int main()
 			masked_blit(aldeano, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
+				rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
-			if(enemy.hp[0] > 0)
+			if((enemy.hp[0] > 0)) // Idea: Make the enemy invisible until we talk with the NPC
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
+				// rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
+				// rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
 			}
 			if((talk == 1) && (player.hp[0] > 0))
 			{
@@ -1060,9 +1071,14 @@ int main()
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
-				textout_ex(textos, font, "¡cof!, ¡cof!", 0, 4, 0x000000, 0xEFD3A6);
-				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0x000000, 0xEFD3A6);
+				textout_ex(textos, font, "¡cof!, ¡cof!", 0, 4, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
+				//blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
+				if(enemy.hp[0] > 0)
+		    	{
+					clear_bitmap(textos);
+				}
 			}
 			//************Interact I*****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
@@ -1268,10 +1284,23 @@ int main()
 				enemy.hp[0] = 0;
 			}
 		}
+//****************************HUD IMPRESSION*********************************************
+		/* The numbers need to change depending on the cures and the gold.
+		   We need a system for both 													*/
+		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
+		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
+		masked_blit(numbers, buffer, number * 9, 0, 122, 41, number, 30); //Potion number 
+		masked_blit(icons, buffer, 32, 0, 156, 41, 32, 32); //Gold icon
+		masked_blit(numbers, buffer, number * 0, 0, 194, 41, number, 30); //Gold number
 //****************************LIFE BAR***************************************************
 		npcValues();
 		enemyValues();
 		playerValues();
+		
+		/* Added large life bar. Needs take damage feature 								*/
+		rectfill(buffer, 70, 18, 326, 30, 0xb70909); //player lifebar (hp)
+		rect(buffer, 70, 18, 326, 30, 0xffffff); //player lifebar (box)
+		
 		rectfill(buffer, player.hp[1], player.hp[2], player.hp[1] + player.hp[0], player.hp[4], 0xb70909);//player lifebar (hp)
 		rect(buffer, player.hp[1], player.hp[2], player.hp[3], player.hp[4], 0xffffff);//player lifebar (box)
 		rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
