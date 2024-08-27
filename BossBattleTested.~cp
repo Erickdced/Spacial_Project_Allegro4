@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-//player 
+//player
 struct player
 {
   	int hp[5];
@@ -29,7 +29,6 @@ void playerValues ()
 	player.hp[2] = player.hb[1] - 8;  //lifebar y1 & lifebox y1
 	player.hp[3] = player.hp[1] + 32; //lifebox x2
 	player.hp[4] = player.hp[2] + 4;  //lifebox y2 & lifebar y2
-	
 	//weapon direction
 	if(player.direc == 0) // key s
 	{
@@ -421,8 +420,7 @@ int main()
 	//BMP declaration 
 	BITMAP *buffer = create_bitmap(800, 600);
 	BITMAP *hitbox = create_bitmap(800, 600);
-	BITMAP *textos = create_bitmap(341, 91);
-	BITMAP *dialogos = create_bitmap(341, 91);
+	BITMAP *textos = create_bitmap(200, 200);
 	//Fondos y choques
 	BITMAP *fondo1 = load_bmp("Map001.bmp", NULL);//mapa
 	BITMAP *fondo2 = load_bmp("Map002.bmp", NULL);//mapa
@@ -442,44 +440,16 @@ int main()
 	BITMAP *instrucciones = load_bmp("Instrucciones.bmp", NULL);
 	BITMAP *creditos = load_bmp("Creditos.bmp", NULL);
 	BITMAP *muerte = load_bmp("Dead.bmp", NULL);
-	//Dialogos
-	BITMAP *M1D1 = load_bmp("M1D1.bmp", NULL);
-	BITMAP *M1D2 = load_bmp("M1D2.bmp", NULL);
-	
-	BITMAP *M2D1 = load_bmp("M2D1.bmp", NULL);
-	BITMAP *M2D2 = load_bmp("M2D2.bmp", NULL);
-	BITMAP *M2D3 = load_bmp("M2D3.bmp", NULL);
-	BITMAP *M2D4 = load_bmp("M2D4.bmp", NULL);
-	BITMAP *M2D5 = load_bmp("M2D5.bmp", NULL);
-	BITMAP *M2D6 = load_bmp("M2D6.bmp", NULL);
-	BITMAP *M2D7 = load_bmp("M2D7.bmp", NULL);
-	BITMAP *M2D8 = load_bmp("M2D8.bmp", NULL);
-	BITMAP *M2D9 = load_bmp("M2D9.bmp", NULL);
-	BITMAP *M2D10 = load_bmp("M2D10.bmp", NULL);
-	BITMAP *M2D11 = load_bmp("M2D11.bmp", NULL);
-	BITMAP *M2D12 = load_bmp("M2D12.bmp", NULL);
-	BITMAP *M2D13 = load_bmp("M2D13.bmp", NULL);
-	
-	BITMAP *M4D1 = load_bmp("M4D1.bmp", NULL);
-	BITMAP *M4D2 = load_bmp("M4D2.bmp", NULL);
-	BITMAP *M4D3 = load_bmp("M4D3.bmp", NULL);
-	BITMAP *M4D4 = load_bmp("M4D4.bmp", NULL);
-		
-	BITMAP *dialogo = load_bmp("Dialogo.bmp", NULL);
 	//Player & Enemy
  	BITMAP *personaje  = load_bmp("Francis.bmp",NULL);//Fracis pancho
  	BITMAP *aldeano = load_bmp("Viejito.bmp", NULL);
- 	BITMAP *lidia = load_bmp("Random1.bmp", NULL);
+ 	BITMAP *lidia = load_bmp("lidia.bmp", NULL);
  	BITMAP *capitan = load_bmp("roderick.bmp", NULL);
+ 	BITMAP *martha = load_bmp("Martha.bmp", NULL);
  	BITMAP *enemigo = load_bmp("Villano001.bmp", NULL); //Enemiga Rosa
  	BITMAP *jefe = load_bmp("Boss.bmp", NULL);
  	BITMAP *ataque = load_bmp("Hit.bmp", NULL);
  	BITMAP *arma = load_bmp("Arma.bmp", NULL);
- 	
- 	//HUD elements 
- 	BITMAP *icons = load_bmp("Icons.bmp", NULL);
- 	BITMAP *pjicon = load_bmp("PJicon.bmp", NULL);
- 	BITMAP *numbers = load_bmp("Numbers.bmp", NULL);
  	
 	//Variable declarations
 	clear_to_color(buffer, 0x000000);
@@ -512,7 +482,6 @@ int main()
 			boss.anima[i] = 64*i;
 		}
 	}
-	
 	player.visdir[0] = 0;
 	player.anima[k] = 0;
 	enemy.visdir[0] = 0;
@@ -523,7 +492,7 @@ int main()
 	enemy.direc = 0;
 	boss.direc = 0;
 	player.hp[0] = 32;
-	player.hb[0] = 363;
+	player.hb[0] = 383;
 	player.hb[1] = 535;
 	enemy.hp[0] = 32;
 	enemy.hb[0] = 128;
@@ -533,11 +502,8 @@ int main()
 	boss.hb[1]= 253;
 	npc1.hb[0] = 468;
 	npc1.hb[1] = 272;
-	
 	j = 0;
 	int mapa = 1;
-	int letter = 8;
-	int number = 24;
 	
 	playerValues();
 	enemyValues();
@@ -621,11 +587,13 @@ int main()
 			player.hb[1] = ay;
 		}
 		if(mapa == 1)
+		{
 			if((getpixel(choque1, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque1, player.hb[2], player.hb[3])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
 			}
+		}
 		if(mapa == 2)
 			if((getpixel(choque2, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque2, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
@@ -639,13 +607,11 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 4)
-		{
 			if((getpixel(choque4, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque4, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
 			}
-		}
 		if(mapa == 5)
 			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
@@ -672,14 +638,12 @@ int main()
 			masked_blit(aldeano, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
-				rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
+				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
-			if((enemy.hp[0] > 0)) // Idea: Make the enemy invisible until we talk with the NPC
+			if(enemy.hp[0] > 0)
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
-				// rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
-				// rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
 			}
 			if((talk == 1) && (player.hp[0] > 0))
 			{
@@ -688,15 +652,14 @@ int main()
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
 			//Interact
-			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
+			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O])&& (talk == 0))
 			{
-				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, " interactuar", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "o para", 24, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "interactuar", 0, 14, 0xffffff, 0x000000);
 				blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 100, 25);
 				if(key[KEY_O])
 				{
 					clear_bitmap(textos);
-					clear_to_color(textos, 0xEFD3A6);
 				}
 			}
 			//Dialogues
@@ -706,17 +669,37 @@ int main()
 				clear_keybuf();
 				if(key[KEY_O])
 				{
-					masked_blit(M1D1, buffer, 0, 0, 37, 480, 341, 91);
-					blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+					textout_ex(textos, font, "Oh, que dia", 0, 4, 0xffffff, 0x000000);
+					textout_ex(textos, font, "tan tranquilo", 0, 14, 0xffffff, 0x000000);
+					textout_ex(textos, font, "en nuestra aldea", 0, 24, 0xffffff, 0x000000);
+					blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20,  128, 34);
 					readkey();
 					clear_keybuf();
 					if(key[KEY_O])
 					{
-						masked_blit(M1D2, buffer, 0, 0, 37, 480, 341, 91);
-						blit(buffer, screen,  0, 0, 0, 0, 800, 600);
+						clear_bitmap(textos);
+						textout_ex(textos, font, "¡Rrraaaargh!", 0, 4, 0xffffff, 0x000000);
+						textout_ex(textos, font, "¡Vengo a sembrar", 0, 14, 0xffffff, 0x000000);
+						textout_ex(textos, font, "el caos en este", 0, 24, 0xffffff, 0x000000);
+						textout_ex(textos, font, "lugar pacifico!", 0, 32, 0xffffff, 0x000000);
+						blit(textos, screen,  0, 0, enemy.hb[2] + 15, enemy.hb[1] - 20,  128, 44);
 						readkey();
 						clear_keybuf();
-						talk = 1;							
+						if(key[KEY_O])
+						{
+							clear_bitmap(textos);
+							textout_ex(textos, font, "¡Detente ahi,", 0, 4, 0xffffff, 0x000000);
+							textout_ex(textos, font, "monstruo!", 0, 14, 0xffffff, 0x000000);
+							textout_ex(textos, font, "No permitire", 0, 24, 0xffffff, 0x000000);
+							textout_ex(textos, font, "que hagas dano", 0, 32, 0xffffff, 0x000000);
+							blit(textos, screen,  0, 0, player.hb[2] + 15, player.hb[1] - 20,  128, 44);
+							readkey();
+							clear_keybuf();
+							if(!key[KEY_0])
+							{
+								talk = 1;
+							}
+						}
 					}
 				}
 				clear_bitmap(textos);
@@ -753,6 +736,7 @@ int main()
 			masked_blit(lidia, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
+				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if(enemy.hp[0] > 0)
@@ -768,8 +752,8 @@ int main()
 			//************Interact I*****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
 			{
-				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, " interactuar", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "o para", 24, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "interactuar", 0, 14, 0xffffff, 0x000000);
 				blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 100, 25);
 				if(key[KEY_O])
 				{
@@ -783,34 +767,43 @@ int main()
 				clear_keybuf();
 				if(key[KEY_O])
 				{
-					masked_blit(M2D1, buffer, 0, 0, 37, 480, 341, 91);
-					blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+					textout_ex(textos, font, "¿Como se supone", 0, 4, 0xffffff, 0x000000);
+					textout_ex(textos, font, "que llegue al", 0, 14, 0xffffff, 0x000000);
+					textout_ex(textos, font, "castillo?", 0, 24, 0xffffff, 0x000000);
+					blit(textos, screen,  0, 0, player.hb[2] + 15, player.hb[1] - 20,  128, 34);
 					readkey();
 					clear_keybuf();
 					if(key[KEY_O])
 					{
-						masked_blit(M2D2, buffer, 0, 0, 37, 480, 341, 91);
-						blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+						clear_bitmap(textos);
+						textout_ex(textos, font, "Yo puedo llevarte,", 0, 4, 0xffffff, 0x000000);
+						textout_ex(textos, font, "pero te pedire", 0, 14, 0xffffff, 0x000000);
+						textout_ex(textos, font, "algo a cambio", 0, 24, 0xffffff, 0x000000);
+						blit(textos, screen,  0, 0, npc1.hb[2] + 15,npc1.hb[1] - 20,  136, 34);
 						readkey();
 						clear_keybuf();
 						if(key[KEY_O])
 						{
-							masked_blit(M2D3, buffer, 0, 0, 37, 480, 341, 91);
-							blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+							clear_bitmap(textos);
+							textout_ex(textos, font, "en verdad tengo", 0, 4, 0xffffff, 0x000000);
+							textout_ex(textos, font, "que ir a ayudar,", 0, 14, 0xffffff, 0x000000);
+							textout_ex(textos, font, "asi que dime", 0, 24, 0xffffff, 0x000000);
+							textout_ex(textos, font, "¿Que necesitas?", 0, 32, 0xffffff, 0x000000);
+							blit(textos, screen,  0, 0, player.hb[2] + 15, player.hb[1] - 20,  130, 44);
 							readkey();
 							clear_keybuf();
 							if(key[KEY_O])
 							{
-								masked_blit(M2D4, buffer, 0, 0, 37, 480, 341, 91);
-								blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+								clear_bitmap(textos);
+								textout_ex(textos, font, "Ve a la aldea", 0, 4, 0xffffff, 0x000000);
+								textout_ex(textos, font, "del NORTE y ", 0, 14, 0xffffff, 0x000000);
+								textout_ex(textos, font, "derrota a los", 0, 24, 0xffffff, 0x000000);
+								textout_ex(textos, font, "invasores", 0, 32, 0xffffff, 0x000000);
+								blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20,  130, 44);
 								readkey();
 								clear_keybuf();
 								if(!key[KEY_0])
 								{
-									masked_blit(M2D5, buffer, 0, 0, 37, 480, 341, 91);
-									blit(buffer, screen,  0, 0, 0, 0,  800, 600);
-									readkey();
-									clear_keybuf();
 									talk = 1;
 								}
 							}
@@ -823,8 +816,8 @@ int main()
 			//************Interact II****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == -1))
 			{
-				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, " interactuar", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "o para", 24, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "interactuar", 0, 14, 0xffffff, 0x000000);
 				blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 100, 25);
 				if(key[KEY_O])
 				{
@@ -838,26 +831,38 @@ int main()
 				clear_keybuf();
 				if(key[KEY_O])
 				{
-					masked_blit(M2D6, buffer, 0, 0, 37, 480, 341, 91);
-					blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+					textout_ex(textos, font, "Listo, ahora", 0, 4, 0xffffff, 0x000000);
+					textout_ex(textos, font, "¿Como llego", 0, 14, 0xffffff, 0x000000);
+					textout_ex(textos, font, "al castillo?", 0, 24, 0xffffff, 0x000000);
+					blit(textos, screen,  0, 0, player.hb[2] + 15, player.hb[1] - 20,  98, 34);
 					readkey();
 					clear_keybuf();
 					if(key[KEY_O])
 					{
-						masked_blit(M2D7, buffer, 0, 0, 37, 480, 341, 91);
-						blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+						clear_bitmap(textos);
+						textout_ex(textos, font, "Antes tienes que", 0, 4, 0xffffff, 0x000000);
+						textout_ex(textos, font, "salvar al capitan,", 0, 14, 0xffffff, 0x000000);
+						textout_ex(textos, font, "esta en problemas", 0, 24, 0xffffff, 0x000000);
+						blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20,  146, 34);
 						readkey();
 						clear_keybuf();
 						if(key[KEY_O])
 						{
-							masked_blit(M2D8, buffer, 0, 0, 37, 480, 341, 91);
-							blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+							clear_bitmap(textos);
+							textout_ex(textos, font, "El lleva mucho", 0, 4, 0xffffff, 0x000000);
+							textout_ex(textos, font, "peleando en el", 0, 14, 0xffffff, 0x000000);
+							textout_ex(textos, font, "SURESTE, corre", 0, 24, 0xffffff, 0x000000);
+							blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20,  146, 34);
 							readkey();
 							clear_keybuf();
 							if(key[KEY_O])
 							{
-								masked_blit(M2D9, buffer, 0, 0, 37, 480, 341, 91);
-								blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+								clear_bitmap(textos);
+								textout_ex(textos, font, "Lo hare,", 0, 4, 0xffffff, 0x000000);
+								textout_ex(textos, font, "espero que", 0, 14, 0xffffff, 0x000000);
+								textout_ex(textos, font, "no sea muy", 0, 24, 0xffffff, 0x000000);
+								textout_ex(textos, font, "tarde", 0, 32, 0xffffff, 0x000000);
+								blit(textos, screen,  0, 0, player.hb[2] + 15, player.hb[1] - 20,  98, 44);
 								readkey();
 								clear_keybuf();
 								if(!key[KEY_0])
@@ -874,8 +879,8 @@ int main()
 			//************Interact III****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 4))
 			{
-				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, " interactuar", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "o para", 24, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "interactuar", 0, 14, 0xffffff, 0x000000);
 				blit(textos, screen,  0, 0, npc1.hb[0], npc1.hb[1] - 40, 100, 25);
 				if(key[KEY_O])
 				{
@@ -889,26 +894,35 @@ int main()
 				clear_keybuf();
 				if(key[KEY_O])
 				{
-					masked_blit(M2D10, buffer, 0, 0, 37, 480, 341, 91);
-					blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+					textout_ex(textos, font, "¿Como esta el", 0, 4, 0xffffff, 0x000000);
+					textout_ex(textos, font, "Capitan?", 0, 14, 0xffffff, 0x000000);
+					blit(textos, screen,  0, 0, npc1.hb[0], npc1.hb[1] - 40,  106, 34);
 					readkey();
 					clear_keybuf();
 					if(key[KEY_O])
 					{
-						masked_blit(M2D11, buffer, 0, 0, 37, 480, 341, 91);
-						blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+						clear_bitmap(textos);
+						textout_ex(textos, font, "Bien, pero ya no", 0, 4, 0xffffff, 0x000000);
+						textout_ex(textos, font, "le quedan fuerzas,", 0, 14, 0xffffff, 0x000000);
+						textout_ex(textos, font, "tengo que irme.", 0, 24, 0xffffff, 0x000000);
+						blit(textos, screen,  0, 0, player.hb[0], player.hb[3] + 10,  146, 34);
 						readkey();
 						clear_keybuf();
 						if(key[KEY_O])
 						{
-							masked_blit(M2D12, buffer, 0, 0, 37, 480, 341, 91);
-							blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+							clear_bitmap(textos);
+							textout_ex(textos, font, "El reino esta al", 0, 4, 0xffffff, 0x000000);
+							textout_ex(textos, font, "ESTE, no puedo", 0, 14, 0xffffff, 0x000000);
+							textout_ex(textos, font, "acompañarte", 0, 24, 0xffffff, 0x000000);
+							blit(textos, screen,  0, 0, npc1.hb[0], npc1.hb[1] - 40,  146, 34);
 							readkey();
 							clear_keybuf();
 							if(key[KEY_O])
 							{
-								masked_blit(M2D13, buffer, 0, 0, 37, 480, 341, 91);
-								blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+								clear_bitmap(textos);
+								textout_ex(textos, font, "    Te deseo    ", 0, 4, 0xffffff, 0x000000);
+								textout_ex(textos, font, "     suerte     ", 0, 14, 0xffffff, 0x000000);
+								blit(textos, screen,  0, 0, npc1.hb[0], npc1.hb[1] - 40,  146, 34);
 								readkey();
 								clear_keybuf();
 								if(!key[KEY_0])
@@ -946,7 +960,6 @@ int main()
 				player.hb[1] = 550;
 				npc1.hb[0] = 264;
 				npc1.hb[1] = 141;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -965,7 +978,6 @@ int main()
 				mapa = 4;
 				player.hb[0] = 25;
 				player.hb[1] = 100;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -986,7 +998,6 @@ int main()
 				mapa = 5;
 				player.hb[0] = 14;
 				player.hb[1] = 411;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1007,7 +1018,7 @@ int main()
 			masked_blit(choque3, buffer, 0, 0, 0, 0, 800, 600);
 			masked_blit(fondo3, buffer, 0, 0, 0, 0, 800, 600);
 			//masked blit of player1
-			masked_blit(lidia, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
+			masked_blit(martha, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
 				rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
@@ -1022,22 +1033,22 @@ int main()
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
-				textout_ex(textos, font, "ALGUIEN SALVEMEEE", 0, 4, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "ALGUIEN SALVEMEEE", 0, 4, 0xffffff, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 138, 18);
 			}
 			if(enemy.hp[0] <= 0)
 			{
 				talk = 1;
-				textout_ex(textos, font, "  GRACIAAAS  ", 0, 4, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "  GRACIAAAS  ", 0, 4, 0xffffff, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
 			if(player.hp[0] <= 0)
 			{
 				talk = 1;
-				textout_ex(textos, font, "   OH NOOOO  ", 0, 4, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "   OH NOOOO  ", 0, 4, 0xffffff, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque3, player.hb[0], player.hb[3]) == 0x00FF00)
 			{
 				talk = -1;
@@ -1046,7 +1057,6 @@ int main()
 				player.hb[1] = 10;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				player.hp[0] = 32;
 				clear_bitmap(textos);
 			}
 		}
@@ -1071,21 +1081,16 @@ int main()
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
-				textout_ex(textos, font, "Â¡cof!, Â¡cof!Â…", 0, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, "Â¡Los derrotare!", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "¡cof!, ¡cof!…", 0, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0xffffff, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
-				//blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
-				if(enemy.hp[0] > 0)
-		    	{
-					clear_bitmap(textos);
-				}
 			}
 			//************Interact I*****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
 			{
 				clear_bitmap(textos);
-				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
-				textout_ex(textos, font, " interactuar", 0, 14, 0xFFFFFF, 0x000000);
+				textout_ex(textos, font, "o para", 24, 4, 0xffffff, 0x000000);
+				textout_ex(textos, font, "interactuar", 0, 14, 0xffffff, 0x000000);
 				blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
 				if(key[KEY_O])
 				{
@@ -1099,26 +1104,39 @@ int main()
 				clear_keybuf();
 				if(key[KEY_O])
 				{
-					masked_blit(M4D1, buffer, 0, 0, 37, 480, 341, 91);
-					blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+					textout_ex(textos, font, "Gracias muchacho,", 0, 4, 0xffffff, 0x000000);
+					textout_ex(textos, font, "¿Cual es tu nombre?", 0, 14, 0xffffff, 0x000000);
+					textout_ex(textos, font, "No eres de aqui", 0, 24, 0xffffff, 0x000000);
+					blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 152, 34);
 					readkey();
 					clear_keybuf();
 					if(key[KEY_O])
 					{
-						masked_blit(M4D2, buffer, 0, 0, 37, 480, 341, 91);
-						blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+						clear_bitmap(textos);
+						textout_ex(textos, font, "Mi nombre es Isaac", 0, 4, 0xffffff, 0x000000);
+						textout_ex(textos, font, "soy un viajero,", 0, 14, 0xffffff, 0x000000);
+						textout_ex(textos, font, "busco a la reina", 0, 24, 0xffffff, 0x000000);
+						blit(textos, screen,  0, 0, player.hb[0], player.hb[3] + 15,  146, 34);
 						readkey();
 						clear_keybuf();
 						if(key[KEY_O])
 						{
-							masked_blit(M4D3, buffer, 0, 0, 37, 480, 341, 91);
-							blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+							clear_bitmap(textos);
+							textout_ex(textos, font, "Ella debe estar", 0, 4, 0xffffff, 0x000000);
+							textout_ex(textos, font, "en problemas", 0, 14, 0xffffff, 0x000000);
+							textout_ex(textos, font, "ve en mi lugar", 0, 24, 0xffffff, 0x000000);
+							blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 152, 34);
 							readkey();
 							clear_keybuf();
 							if(key[KEY_O])
 							{
-								masked_blit(M4D4, buffer, 0, 0, 37, 480, 341, 91);
-								blit(buffer, screen,  0, 0, 0, 0,  800, 600);
+								clear_bitmap(textos);
+								textout_ex(textos, font, "Estare bien pero", 0, 4, 0xffffff, 0x000000);
+								textout_ex(textos, font, "date prisa ¡cof!", 0, 14, 0xffffff, 0x000000);
+								textout_ex(textos, font, "no se de donde", 0, 24, 0xffffff, 0x000000);
+								textout_ex(textos, font, "salieron, pero", 0, 32, 0xffffff, 0x000000);
+								textout_ex(textos, font, "son peligrosos", 0, 40, 0xffffff, 0x000000);
+								blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20,  152, 52);
 								readkey();
 								clear_keybuf();
 								if(!key[KEY_0])
@@ -1132,7 +1150,7 @@ int main()
 				}
 				clear_bitmap(textos);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque4, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 2;
@@ -1140,7 +1158,6 @@ int main()
 				player.hb[1] = 555;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1166,14 +1183,14 @@ int main()
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//map change
 			if((talk == 1) && (player.hp[0] > 0))
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
 			{
 				mapa = 2;
@@ -1183,14 +1200,12 @@ int main()
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
 				enemy.hp[0] = 0;
-				player.hp[0] = 32;
 			}
 			else if (getpixel(choque5, player.hb[2], player.hb[3]) == 0x00FF00)
 			{
 				mapa = 6;
 				player.hb[0] = 12;
 				player.hb[1] = 310;
-				player.hp[0] = 32;
 				/*if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1220,14 +1235,14 @@ int main()
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+			//map change
 			if((talk == 1) && (player.hp[0] > 0))
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque6, player.hb[0], player.hb[1]) == 0xFF00FF)
 			{
 				mapa = 7;
@@ -1274,7 +1289,7 @@ int main()
 				bossAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+			//map change
 			if(getpixel(choque7, player.hb[2], player.hb[3]) == 0xFF0000)
 			{
 				mapa = 6;
@@ -1284,23 +1299,10 @@ int main()
 				enemy.hp[0] = 0;
 			}
 		}
-//****************************HUD IMPRESSION*********************************************
-		/* The numbers need to change depending on the cures and the gold.
-		   We need a system for both 													*/
-		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
-		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
-		masked_blit(numbers, buffer, number * 9, 0, 122, 41, number, 30); //Potion number 
-		masked_blit(icons, buffer, 32, 0, 156, 41, 32, 32); //Gold icon
-		masked_blit(numbers, buffer, number * 0, 0, 194, 41, number, 30); //Gold number
 //****************************LIFE BAR***************************************************
 		npcValues();
 		enemyValues();
 		playerValues();
-		
-		/* Added large life bar. Needs take damage feature 								*/
-		rectfill(buffer, 70, 18, 326, 30, 0xb70909); //player lifebar (hp)
-		rect(buffer, 70, 18, 326, 30, 0xffffff); //player lifebar (box)
-		
 		rectfill(buffer, player.hp[1], player.hp[2], player.hp[1] + player.hp[0], player.hp[4], 0xb70909);//player lifebar (hp)
 		rect(buffer, player.hp[1], player.hp[2], player.hp[3], player.hp[4], 0xffffff);//player lifebar (box)
 		rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
