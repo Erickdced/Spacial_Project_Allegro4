@@ -22,6 +22,7 @@ struct player npc1;
 struct player enemy;
 struct player atack;
 struct player boss;
+
 //act of player 
 void playerValues ()
 {
@@ -540,12 +541,10 @@ int main()
 	boss.hb[1]= 253;
 	npc1.hb[0] = 468;
 	npc1.hb[1] = 272;
-	player.potion = 0;
 	
 	j = 0;
 	int mapa = 1;
 	int letter = 8;
-	int pots = 24;
 	
 	playerValues();
 	enemyValues();
@@ -737,11 +736,6 @@ int main()
 				player.hb[1] = 560;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				if(talk == 0)
-				{
-					talk = 2;
-					enemy.hp[0] = 0;
-				}
 				if(talk == 1)
 				{
 					talk = 0;
@@ -954,6 +948,7 @@ int main()
 				player.hb[1] = 550;
 				npc1.hb[0] = 264;
 				npc1.hb[1] = 141;
+				player.potion += 2;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1290,8 +1285,19 @@ int main()
 		   We need a system for both 													*/
 		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
 		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
-		masked_blit(numbers, buffer, player.potion * 24, 0, 122, 41, 24, 30); //Potion number 
+		
+		if(player.potion > 0)
+		{
+			masked_blit(numbers, buffer, player.potion * 24, 0, 122, 41, 24, 30); //Potion number 	{	
+		}
+		if(player.potion == 0)
+		{
+			masked_blit(numbers, buffer, 0, 0, 122, 41, 24, 30); //Potion number 
+		}
+	
 		masked_blit(icons, buffer, 32, 0, 156, 41, 32, 32); //Gold icon
+		
+		
 		if(player.money < 10)
 		{			
 			masked_blit(numbers, buffer, 0 * 24, 0, 194, 41, 24, 30); //Gold number
@@ -1308,8 +1314,8 @@ int main()
 		playerValues();
 		
 		/* Added large life bar. Needs take damage feature 								*/
-		rectfill(buffer, 70, 18, 326, 30, 0xb70909); //player lifebar (hp)
-		rect(buffer, 70, 18, 326, 30, 0xffffff); //player lifebar (box)
+		rectfill(buffer, 70, 18, (player.hp[0] * 10), 30, 0xb70909); //player lifebar (hp)
+		rect(buffer, 70, 18, 320, 30, 0xffffff); //player lifebar (box)
 		
 		rectfill(buffer, player.hp[1], player.hp[2], player.hp[1] + player.hp[0], player.hp[4], 0xb70909);//player lifebar (hp)
 		rect(buffer, player.hp[1], player.hp[2], player.hp[3], player.hp[4], 0xffffff);//player lifebar (box)
@@ -1356,13 +1362,21 @@ int main()
 			}
 		}
 //******************Healing
-		if (key[KEY_I])
+		if (key[KEY_I] && player.potion > 0)
 		{
-			if(player.hp[0] < 32)
+			clear_keybuf();
+			readkey();	
+			if (player.hp[0] + 8 <= 32)
 			{
 				player.hp[0] += 8; 
 				player.potion -= 1;
 			}
+			if (player.hp[0] + 8 > 32)
+			{
+				player.hp[0] = 32;
+				player.potion -= 1;
+			}
+			rest(20);
 		}
 //******************enemy dead
 		if (enemy.hp[0] == 0)

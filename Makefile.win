@@ -1,5 +1,5 @@
 # Project: Proyecto 1
-# Makefile created by Dev-C++ 4.9.9.1
+# Makefile created by Dev-C++ 4.9.9.2
 
 CPP  = g++.exe
 CC   = gcc.exe
@@ -7,12 +7,13 @@ WINDRES = windres.exe
 RES  = MejorasTexto_private.res
 OBJ  = MejorasTexto.o $(RES)
 LINKOBJ  = MejorasTexto.o $(RES)
-LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/Users/DELL E5430/Downloads/allegro/lib" -static-libgcc -lallegro -mwindows -lallegro-4.4.2-monolith-mt 
-INCS =  -I"C:/Dev-Cpp/include"  -I"C:/Users/DELL E5430/Downloads/allegro/include" 
-CXXINCS =  -I"C:/Dev-Cpp/include/c++/3.3.1"  -I"C:/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Dev-Cpp/include"  -I"C:/Users/DELL E5430/Downloads/allegro/include" 
+LIBS =  -L"lib" -mwindows -lallegro-4.4.2-monolith-mt 
+INCS =  -I"include" 
+CXXINCS =  -I"lib/gcc-lib/mingw32/3.3.1/include"  -I"include/c++/3.3.1/backward"  -I"include/c++/3.3.1/mingw32"  -I"include/c++/3.3.1"  -I"lib/gcc/mingw32/3.4.2/include"  -I"include/c++/3.4.2/backward"  -I"include/c++/3.4.2/mingw32"  -I"include/c++/3.4.2"  -I"include" 
 BIN  = MejorasTexto.exe
 CXXFLAGS = $(CXXINCS)  
 CFLAGS = $(INCS)  
+RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -20,7 +21,7 @@ all: all-before MejorasTexto.exe all-after
 
 
 clean: clean-custom
-	rm -f $(OBJ) $(BIN)
+	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o "MejorasTexto.exe" $(LIBS)
