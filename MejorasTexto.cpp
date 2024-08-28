@@ -14,6 +14,8 @@ struct player
   	int anima[3];
   	int atack[3];
   	int menu[4];
+  	int money;
+  	int potion;
 };
 struct player player;
 struct player npc1;
@@ -165,6 +167,11 @@ void enemyDead ()
 	enemy.hp[2] = 0;
 	enemy.hp[3] = 0;
 	enemy.hp[4] = 0;
+}
+//enemy loot
+void enemyLoot ()
+{
+	player.money += (rand() % 4) + 1;
 }
 void bossDead ()
 {
@@ -533,11 +540,12 @@ int main()
 	boss.hb[1]= 253;
 	npc1.hb[0] = 468;
 	npc1.hb[1] = 272;
+	player.potion = 0;
 	
 	j = 0;
 	int mapa = 1;
 	int letter = 8;
-	int number = 24;
+	int pots = 24;
 	
 	playerValues();
 	enemyValues();
@@ -722,14 +730,13 @@ int main()
 				clear_bitmap(textos);
 			}
 			//change of Map
-			if(getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF)
+			if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
 			{
 				mapa = 2;
 				player.hb[0] = 420;
 				player.hb[1] = 560;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				player.hp[0] = 32;
 				if(talk == 0)
 				{
 					talk = 2;
@@ -808,6 +815,7 @@ int main()
 								if(!key[KEY_0])
 								{
 									masked_blit(M2D5, buffer, 0, 0, 37, 480, 341, 91);
+									player.potion += 2;
 									blit(buffer, screen,  0, 0, 0, 0,  800, 600);
 									readkey();
 									clear_keybuf();
@@ -946,7 +954,6 @@ int main()
 				player.hb[1] = 550;
 				npc1.hb[0] = 264;
 				npc1.hb[1] = 141;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -965,7 +972,6 @@ int main()
 				mapa = 4;
 				player.hb[0] = 25;
 				player.hb[1] = 100;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -986,7 +992,6 @@ int main()
 				mapa = 5;
 				player.hb[0] = 14;
 				player.hb[1] = 411;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1046,7 +1051,6 @@ int main()
 				player.hb[1] = 10;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				player.hp[0] = 32;
 				clear_bitmap(textos);
 			}
 		}
@@ -1140,7 +1144,6 @@ int main()
 				player.hb[1] = 555;
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
-				player.hp[0] = 32;
 				if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1190,7 +1193,6 @@ int main()
 				mapa = 6;
 				player.hb[0] = 12;
 				player.hb[1] = 310;
-				player.hp[0] = 32;
 				/*if(player.hp[0] < 20)
 				{
 					player.hp[0] = 30;
@@ -1233,7 +1235,6 @@ int main()
 				mapa = 7;
 				player.hb[0] = 374;
 				player.hb[1] = 535;
-				player.hp[0] = 32;
 				if(talk == 1)
 				{
 					talk = 1;
@@ -1289,9 +1290,18 @@ int main()
 		   We need a system for both 													*/
 		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
 		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
-		masked_blit(numbers, buffer, number * 9, 0, 122, 41, number, 30); //Potion number 
+		masked_blit(numbers, buffer, player.potion * 24, 0, 122, 41, 24, 30); //Potion number 
 		masked_blit(icons, buffer, 32, 0, 156, 41, 32, 32); //Gold icon
-		masked_blit(numbers, buffer, number * 0, 0, 194, 41, number, 30); //Gold number
+		if(player.money < 10)
+		{			
+			masked_blit(numbers, buffer, 0 * 24, 0, 194, 41, 24, 30); //Gold number
+			masked_blit(numbers, buffer, player.money * 24, 0, 218, 41, 24, 30); //Gold number
+		}
+		if(player.money >= 10)
+		{
+			masked_blit(numbers, buffer, (player.money / 10) * 24, 0, 194, 41, 24, 30); //Gold number
+			masked_blit(numbers, buffer, (player.money % 10) * 24, 0, 218, 41, 24, 30); //Gold number
+		}
 //****************************LIFE BAR***************************************************
 		npcValues();
 		enemyValues();
@@ -1345,10 +1355,24 @@ int main()
 				eh = 0;
 			}
 		}
+//******************Healing
+		if (key[KEY_I])
+		{
+			if(player.hp[0] < 32)
+			{
+				player.hp[0] += 8; 
+				player.potion -= 1;
+			}
+		}
 //******************enemy dead
 		if (enemy.hp[0] == 0)
 		{
-			enemyDead();
+			if(enemy.hb[0] != 0 && enemy.hb[1] != 0)
+			{
+				player.money += (rand() %	4) + 1;
+			}
+			enemyDead(); 
+			
 		}
 //******************enemy dead
 		if (boss.hp[0] == 0)

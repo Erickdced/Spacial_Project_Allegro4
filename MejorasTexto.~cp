@@ -14,6 +14,7 @@ struct player
   	int anima[3];
   	int atack[3];
   	int menu[4];
+  	int money;
 };
 struct player player;
 struct player npc1;
@@ -165,6 +166,11 @@ void enemyDead ()
 	enemy.hp[2] = 0;
 	enemy.hp[3] = 0;
 	enemy.hp[4] = 0;
+}
+//enemy loot
+void enemyLoot ()
+{
+	player.money += (rand() % 4) + 1;
 }
 void bossDead ()
 {
@@ -537,7 +543,7 @@ int main()
 	j = 0;
 	int mapa = 1;
 	int letter = 8;
-	int number = 24;
+	int pots = 24;
 	
 	playerValues();
 	enemyValues();
@@ -722,7 +728,7 @@ int main()
 				clear_bitmap(textos);
 			}
 			//change of Map
-			if(getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF)
+			if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
 			{
 				mapa = 2;
 				player.hb[0] = 420;
@@ -1289,9 +1295,9 @@ int main()
 		   We need a system for both 													*/
 		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
 		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
-		masked_blit(numbers, buffer, number * 9, 0, 122, 41, number, 30); //Potion number 
+		// masked_blit(numbers, buffer, number * 0, 0, 122, 41, number, 30); //Potion number 
 		masked_blit(icons, buffer, 32, 0, 156, 41, 32, 32); //Gold icon
-		masked_blit(numbers, buffer, number * 0, 0, 194, 41, number, 30); //Gold number
+		masked_blit(numbers, buffer, player.money * 24, 0, 194, 41, 24, 30); //Gold number
 //****************************LIFE BAR***************************************************
 		npcValues();
 		enemyValues();
@@ -1348,7 +1354,12 @@ int main()
 //******************enemy dead
 		if (enemy.hp[0] == 0)
 		{
-			enemyDead();
+			if(enemy.hb[0] != 0 && enemy.hb[1] != 0)
+			{
+				player.money += (rand() %	4) + 1;
+			}
+			enemyDead(); 
+			
 		}
 //******************enemy dead
 		if (boss.hp[0] == 0)

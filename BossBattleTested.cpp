@@ -168,7 +168,7 @@ void enemyDead ()
 }
 void enemyLoot ()
 {
-			player.money += (rand() %	4) + 1;
+	player.money += (rand() % 4) + 1;
 }
 void bossDead ()
 {
