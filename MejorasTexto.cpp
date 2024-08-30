@@ -424,6 +424,20 @@ void bossAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
 	}
 	return;
 }
+/*Verification of your position in map*/
+int position () 
+{
+	int posValue;
+	if(player.midx < 0 || player.midx > 800 || player.midy < 0 || player.midy > 600)
+	{
+		posValue = 1;
+	}
+	else
+	{
+		posValue = 0;
+	}
+	return posValue;
+}
 //*************************************MAIN**********************************************
 int main() 
 {	
@@ -567,6 +581,7 @@ int main()
 	j = 0;
 	int mapa = 1;
 	int letter = 8;
+	int posValue = 0;
 	
 	playerValues();
 	enemyValues();
@@ -638,6 +653,7 @@ int main()
 		//rectfill(hitbox, boss.whb[0], boss.whb[1], boss.whb[2], boss.whb[3], 0x0026FF);//boss-weapon Hitbox
 //*********************MOVE**************************************************************
 		move();
+		posValue = position();
 //**************************LIMITS*******************************************************
 		/*if((getpixel(hitbox, player.hb[0] -5, player.hb[1] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[2] - 5, player.hb[1] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[0] - 5, player.hb[3] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[2] - 5, player.hb[3] - 5) == 0x00FFFF))
 		{
@@ -656,7 +672,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 1)
-			if((getpixel(choque1, player.midx, player.midy) == 0xFFFFFF) || player.midy <= 0)
+			if((getpixel(choque1, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[0];
 				player.hb[1] = player.ylog[0];
@@ -668,7 +684,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 2)
-			if((getpixel(choque2, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque2, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[1];
 				player.hb[1] = player.ylog[1];
@@ -680,7 +696,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 3)
-			if((getpixel(choque3, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque3, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[2];
 				player.hb[1] = player.ylog[2];
@@ -695,7 +711,7 @@ int main()
 		}
 		if(mapa == 4)
 		{
-			if((getpixel(choque4, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque4, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[3];
 				player.hb[1] = player.ylog[3];
@@ -708,7 +724,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 5)
-			if((getpixel(choque5, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque5, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[4];
 				player.hb[1] = player.ylog[4];
@@ -720,7 +736,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 6)
-			if((getpixel(choque6, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque6, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[5];
 				player.hb[1] = player.ylog[5];
@@ -732,12 +748,12 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 7)
-			if((getpixel(choque7, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque7, player.midx, player.midy) == 0xFFFFFF) || posValue == 1)
 			{
 				player.hb[0] = player.xlog[6];
 				player.hb[1] = player.ylog[6];
 			}
-//*************************MASKED_BLIT & CHANGE OF MAP001********************************
+//*************************MASKED_BLIT & OF MAP001********************************
 		if(mapa == 1)
 		{
 			masked_blit(choque1, buffer, 0, 0, 0, 0, 800, 600);
@@ -996,79 +1012,82 @@ int main()
 				clear_bitmap(textos);
 			}
 			//Change of map
-			if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0x00FFFF)) //Back to MAP001
+			if (enemy.hp[0] == 0)
 			{
-				player.hb[0] = 400;
-				player.hb[1] = 20;
-				mapa = 1;
-				npc1.hb[0] = 468;
-				npc1.hb[1] = 272;
-				if(talk == 2)
+				if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0x00FFFF)) //Back to MAP001
 				{
-					talk = 0;
-					j = 0;  
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 128;
-					enemy.hb[1]= 256;
+					player.hb[0] = 400;
+					player.hb[1] = 20;
+					mapa = 1;
+					npc1.hb[0] = 468;
+					npc1.hb[1] = 272;
+					if(talk == 2)
+					{
+						talk = 0;
+						j = 0;  
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 128;
+						enemy.hb[1]= 256;
+					}
 				}
-			}
-			else if ((getpixel(choque2, player.hb[0], player.hb[1]) == 0x00FF00) && (talk != 2))//Go to MAP003
-			{
-				mapa = 3;
-				player.hb[0] = 330;
-				player.hb[1] = 550;
-				npc1.hb[0] = 264;
-				npc1.hb[1] = 141;
-				player.potion += 2;
-				if(player.hp[0] < 20)
+				else if ((getpixel(choque2, player.hb[0], player.hb[1]) == 0x00FF00) && (talk != 2))//Go to MAP003
 				{
-					player.hp[0] = 30;
+					mapa = 3;
+					player.hb[0] = 330;
+					player.hb[1] = 550;
+					npc1.hb[0] = 264;
+					npc1.hb[1] = 141;
+					player.potion += 2;
+					if(player.hp[0] < 20)
+					{
+						player.hp[0] = 30;
+					}
+					if(talk == 1)
+					{
+						talk = 0;
+						j = 0;
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 321;
+						enemy.hb[1] = 167;
+					}
 				}
-				if(talk == 1)
+				else if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0xFF00FF) && (talk != 2))//Go to MAP004
 				{
-					talk = 0;
-					j = 0;
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 321;
-					enemy.hb[1] = 167;
+					mapa = 4;
+					player.hb[0] = 25;
+					player.hb[1] = 100;
+					if(player.hp[0] < 20)
+					{
+						player.hp[0] = 30;
+					}
+					if(talk == 1)
+					{
+						talk = 0;
+						j = 0;
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 511;
+						enemy.hb[1] = 382;
+						npc1.hb[0] = 338;
+						npc1.hb[1] = 378;
+					}
 				}
-			}
-			else if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0xFF00FF) && (talk != 2))//Go to MAP004
-			{
-				mapa = 4;
-				player.hb[0] = 25;
-				player.hb[1] = 100;
-				if(player.hp[0] < 20)
+				else if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0xFF0000) && (talk != 2))//Go to MAP005
 				{
-					player.hp[0] = 30;
-				}
-				if(talk == 1)
-				{
-					talk = 0;
-					j = 0;
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 511;
-					enemy.hb[1] = 382;
-					npc1.hb[0] = 338;
-					npc1.hb[1] = 378;
-				}
-			}
-			else if ((getpixel(choque2, player.hb[2], player.hb[3]) == 0xFF0000) && (talk != 2))//Go to MAP005
-			{
-				mapa = 5;
-				player.hb[0] = 14;
-				player.hb[1] = 411;
-				if(player.hp[0] < 20)
-				{
-					player.hp[0] = 30;
-				}
-				if(talk == 1)
-				{
-					talk = 1;
-					j = 0;
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 549;
-					enemy.hb[1] = 96;
+					mapa = 5;
+					player.hb[0] = 14;
+					player.hb[1] = 411;
+					if(player.hp[0] < 20)
+					{
+						player.hp[0] = 30;
+					}
+					if(talk == 1)
+					{
+						talk = 1;
+						j = 0;
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 549;
+						enemy.hb[1] = 96;
+					}
 				}
 			}
 		}
@@ -1109,15 +1128,18 @@ int main()
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 104, 18);
 			}
 			//cambio de mapa
-			if(getpixel(choque3, player.hb[0], player.hb[3]) == 0x00FF00)
+			if (enemy.hp[0] == 0)
 			{
-				talk = -1;
-				mapa = 2;
-				player.hb[0] = 320;
-				player.hb[1] = 10;
-				npc1.hb[0] = 413;
-				npc1.hb[1] = 492;
-				clear_bitmap(textos);
+				if(getpixel(choque3, player.hb[0], player.hb[3]) == 0x00FF00)
+				{
+					talk = -1;
+					mapa = 2;
+					player.hb[0] = 320;
+					player.hb[1] = 10;
+					npc1.hb[0] = 413;
+					npc1.hb[1] = 492;
+					clear_bitmap(textos);
+				}
 			}
 		}
 //*************************MASKED_BLIT & CHANGE OF MAP004********************************
@@ -1243,26 +1265,25 @@ int main()
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
 			//cambio de mapa
-			if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
+			if (enemy.hp[0] == 0)
 			{
-				mapa = 2;
-				talk = 3;
-				player.hb[0] = 748;
-				player.hb[1] = 305;
-				npc1.hb[0] = 413;
-				npc1.hb[1] = 492;
-				enemy.hp[0] = 0;
-				player.hp[0] = 32;
-			}
-			else if (getpixel(choque5, player.hb[2], player.hb[3]) == 0x00FF00)
-			{
-				mapa = 6;
-				player.hb[0] = 12;
-				player.hb[1] = 310;
-				/*if(player.hp[0] < 20)
+				if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
 				{
-					player.hp[0] = 30;
-				}*/
+					mapa = 2;
+					talk = 3;
+					player.hb[0] = 748;
+					player.hb[1] = 305;
+					npc1.hb[0] = 413;
+					npc1.hb[1] = 492;
+					enemy.hp[0] = 0;
+					player.hp[0] = 32;
+				}
+				else if (getpixel(choque5, player.hb[2], player.hb[3]) == 0x00FF00)
+				{
+					mapa = 6;
+					player.hb[0] = 12;
+					player.hb[1] = 310;
+				}
 				if(talk == 1)
 				{
 					talk = 1;
@@ -1296,28 +1317,31 @@ int main()
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
 			//cambio de mapa
-			if(getpixel(choque6, player.hb[0], player.hb[1]) == 0xFF00FF)
+			if (enemy.hp[0] == 0)
 			{
-				mapa = 7;
-				player.hb[0] = 374;
-				player.hb[1] = 535;
-				if(talk == 1)
+				if(getpixel(choque6, player.hb[0], player.hb[1]) == 0xFF00FF)
 				{
-					talk = 1;
-					bj = 0;
-					boss.hp[0] = 64;
-					boss.hb[0] = 383;
-					boss.hb[1] = 253;
+					mapa = 7;
+					player.hb[0] = 374;
+					player.hb[1] = 535;
+					if(talk == 1)
+					{
+						talk = 1;
+						bj = 0;
+						boss.hp[0] = 64;
+						boss.hb[0] = 383;
+						boss.hb[1] = 253;
+					}
 				}
-			}
-			else if(getpixel(choque6, player.hb[0], player.hb[1]) == 0x00FF00)
-			{
-				mapa = 5;
-				talk = 0;
-				player.hb[0] = 760;
-				player.hb[1] = 93;
-				enemy.hp[0] = 0;
-				boss.hp[0] = 64;
+				else if(getpixel(choque6, player.hb[0], player.hb[1]) == 0x00FF00)
+				{
+					mapa = 5;
+					talk = 0;
+					player.hb[0] = 760;
+					player.hb[1] = 93;
+					enemy.hp[0] = 0;
+					boss.hp[0] = 64;
+				}
 			}
 		}
 //*************************MASKED_BLIT & CHANGE OF MAP007********************************
