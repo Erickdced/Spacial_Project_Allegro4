@@ -656,7 +656,7 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 1)
-			if((getpixel(choque1, player.midx, player.midy) == 0xFFFFFF))
+			if((getpixel(choque1, player.midx, player.midy) == 0xFFFFFF) || player.midy <= 0)
 			{
 				player.hb[0] = player.xlog[0];
 				player.hb[1] = player.ylog[0];
@@ -795,20 +795,23 @@ int main()
 				clear_bitmap(textos);
 			}
 			//change of Map
-			if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
+			if (enemy.hp[0] == 0)
 			{
-				mapa = 2;
-				player.hb[0] = player.xlog[1];
-				player.hb[1] = player.ylog[1];
-				npc1.hb[0] = 413;
-				npc1.hb[1] = 492;
-				if(talk == 1)
+				if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
 				{
-					talk = 0;
-					j = 0;
-					enemy.hp[0] = 32;
-					enemy.hb[0] = 272;
-					enemy.hb[1]= 15;
+					mapa = 2;
+					player.hb[0] = player.xlog[1];
+					player.hb[1] = player.ylog[1];
+					npc1.hb[0] = 413;
+					npc1.hb[1] = 492;
+					if(talk == 1)
+					{
+						talk = 0;
+						j = 0;
+						enemy.hp[0] = 32;
+						enemy.hb[0] = 272;
+						enemy.hb[1]= 15;
+					}
 				}
 			}
 		}
