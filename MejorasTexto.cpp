@@ -494,19 +494,18 @@ int main()
  	//initial coords
  	player.xlog[0] = 364;
  	player.ylog[0] = 536;
- 	player.xlog[1] = 420;
+ 	player.xlog[1] = 440;
  	player.ylog[1] = 560;
- 	player.xlog[2] = 
- 	player.ylog[2] =
-	player.xlog[3] = 
- 	player.ylog[3] =
-	player.xlog[4] = 
- 	player.ylog[4] = 
-	player.xlog[5] = 
- 	player.ylog[5] =	
- 	player.xlog[6] =
- 	player.ylog[6]
- 	
+ 	player.xlog[2] = 330;
+ 	player.ylog[2] = 550;
+	player.xlog[3] = 510;
+ 	player.ylog[3] = 382;
+	player.xlog[4] = 14;
+ 	player.ylog[4] = 411;
+	player.xlog[5] = 12;
+ 	player.ylog[5] = 310;	
+ 	player.xlog[6] = 374;
+ 	player.ylog[6] = 535;
 	//Variable declarations
 	clear_to_color(buffer, 0x000000);
 	int ax, ay, ex, ey, bx, by, k = 0, h = 0, eh = 0, i = 0, j = 0, bj = 0, aip = 0, talk = 0;
@@ -704,10 +703,10 @@ int main()
 				player.hb[1] = ay;
 			}
 		if(mapa == 5)
-			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) && (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
-				player.hb[0] = ;
-				player.hb[1] = ay;
+				player.hb[0] = player.xlog[4];
+				player.hb[1] = player.ylog[4];
 			}
 		if(mapa == 6)
 			if((getpixel(choque6, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque6, player.hb[2], player.hb[3]) == 0xFFFFFF))
@@ -715,11 +714,23 @@ int main()
 				player.hb[0] = ax;
 				player.hb[1] = ay;
 			}
+		if(mapa == 6)
+			if((getpixel(choque6, player.hb[0], player.hb[3]) == 0xFFFFFF) && (getpixel(choque6, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			{
+				player.hb[0] = player.xlog[5];
+				player.hb[1] = player.ylog[5];
+			}
 		if(mapa == 7)
 			if((getpixel(choque7, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque7, player.hb[2], player.hb[3]) == 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
+			}
+		if(mapa == 7)
+			if((getpixel(choque7, player.hb[0], player.hb[3]) == 0xFFFFFF) && (getpixel(choque7, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			{
+				player.hb[0] = player.xlog[6];
+				player.hb[1] = player.ylog[6];
 			}
 //*************************MASKED_BLIT & CHANGE OF MAP001********************************
 		if(mapa == 1)
@@ -782,8 +793,8 @@ int main()
 			if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
 			{
 				mapa = 2;
-				player.hb[0] = player.xlog[mapa];
-				player.hb[1] = player.ylog[mapa];
+				player.hb[0] = player.xlog[1];
+				player.hb[1] = player.ylog[1];
 				npc1.hb[0] = 413;
 				npc1.hb[1] = 492;
 				if(talk == 1)
@@ -800,7 +811,7 @@ int main()
 		if(mapa == 2)
 		{
 			masked_blit(choque2, buffer, 0, 0, 0, 0, 800, 600);
-			//masked_blit(fondo2, buffer, 0, 0, 0, 0, 800, 600);
+			masked_blit(fondo2, buffer, 0, 0, 0, 0, 800, 600);
 			masked_blit(lidia, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
@@ -817,6 +828,7 @@ int main()
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
+			
 			//************Interact I*****************************************************
 			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
 			{
@@ -1257,7 +1269,7 @@ int main()
 		if(mapa == 6)
 		{
 			masked_blit(choque6, buffer, 0, 0, 0, 0, 800, 600);
-			masked_blit(fondo6, buffer, 0, 0, 0, 0, 800, 600);
+			//masked_blit(fondo6, buffer, 0, 0, 0, 0, 800, 600);
 			//masked blit of player1
 			if(player.hp[0] > 0)
 			{
