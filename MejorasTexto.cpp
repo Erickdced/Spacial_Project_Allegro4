@@ -308,7 +308,7 @@ void enemyAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
 			masked_blit(ataque, buffer, 64, 0, enemy.hb[0], enemy.hb[1] - 32, 32, 32);
 			player.hb[1] -= 32;
 		}
-		player.hp[0] -= 2;
+		player.hp[0] -= 1;
 		playerValues();
 		rest(100);
 	}
@@ -438,7 +438,8 @@ int position ()
 	}
 	return posValue;
 }
-//*************************************MAIN**********************************************
+/*Border check*/
+/*************************************MAIN**********************************************/
 int main() 
 {	
 	allegro_init();
@@ -896,7 +897,7 @@ int main()
 								if(!key[KEY_0])
 								{
 									masked_blit(M2D5, buffer, 0, 0, 37, 480, 341, 91);
-									player.potion += 2;
+									player.potion += 9;
 									blit(buffer, screen,  0, 0, 0, 0,  800, 600);
 									readkey();
 									clear_keybuf();
@@ -1414,7 +1415,7 @@ int main()
 		enemyValues();
 		playerValues();
 		
-		/* Added large life bar. Needs take damage feature*/
+		/* Added large life bar.*/
 		if (player.hp[0] > 0)
 		{
 		rectfill(buffer, 70, 18, ((player.hp[0] * 8) + 68), 30, 0xb70909); //player lifebar (hp)
