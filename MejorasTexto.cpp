@@ -30,8 +30,8 @@ struct player boss;
 //act of player 
 void playerValues ()
 {
-	player.hb[2] = player.hb[0] + 32; //player x2
-	player.hb[3] = player.hb[1] + 32; //player y2
+	player.hb[2] = player.hb[0] + 32; //Player x2 acctualization
+	player.hb[3] = player.hb[1] + 32; //Player y2 actualization
 	player.hp[1] = player.hb[0];	  //lifebar x1 & lifebox x1 
 	player.hp[2] = player.hb[1] - 8;  //lifebar y1 & lifebox y1
 	player.hp[3] = player.hp[1] + 32; //lifebox x2
@@ -40,29 +40,29 @@ void playerValues ()
 	player.midy = (player.hb[1] + player.hb[3]) / 2;
 	
 	
-	//weapon direction
-	if(player.direc == 0) // key s
+	//Weapon direction
+	if(player.direc == 0) // key s, Down direction
 	{
 		player.whb[0] = player.hb[0] + 14;	//x1
 		player.whb[2] = player.hb[0] + 18;	//x2
 		player.whb[1] = player.hb[3] + 8;	//y1
 		player.whb[3] = player.hb[3];		//y2
     }
-    if(player.direc == 1) // key a
+    if(player.direc == 1) // key a, Right direction
     {
 		player.whb[0] = player.hb[0] - 8;	//x1
 		player.whb[2] = player.hb[0];   	//x2
 		player.whb[1] = player.hb[1] + 14; 	//y1
 		player.whb[3] = player.hb[1] + 18;	//y2
 	}
-	if(player.direc == 2) // key d
+	if(player.direc == 2) // key d, Left direction
 	{
 		player.whb[0] = player.hb[2] + 8;	//x1
 		player.whb[2] = player.hb[2];   	//z2
 		player.whb[1] = player.hb[1] + 14; 	//y1
 		player.whb[3] = player.hb[1] + 18;	//y2
 	}
-	if(player.direc == 3) // key w
+	if(player.direc == 3) // key w, Up direction
 	{
 		player.whb[0] = player.hb[0] + 14;	//x1
 		player.whb[2] = player.hb[0] + 18;	//x2
@@ -73,35 +73,35 @@ void playerValues ()
 //act of enemy
 void enemyValues ()
 {
-	enemy.hb[2] = enemy.hb[0] + 32; //x2
-	enemy.hb[3] = enemy.hb[1] + 32; //y2
+	enemy.hb[2] = enemy.hb[0] + 32; //x2 actualization
+	enemy.hb[3] = enemy.hb[1] + 32; //y2 actualization
 	enemy.hp[1] = enemy.hb[0];		//enemy lifebar & lifebox x1
 	enemy.hp[2] = enemy.hb[1] - 8;	//enemy lifebar & lifebox y1
 	enemy.hp[3] = enemy.hp[1] + 32;	//enemy lifebox x2
 	enemy.hp[4] = enemy.hp[2] + 4;  //enemy lifebar & lifebox y2
-	//weapon direction
-	if(enemy.direc == 0) // key s
+	//Weapon direction
+	if(enemy.direc == 0) //Down follow
 	{
 		enemy.whb[0] = enemy.hb[0] + 14;	//x1
 		enemy.whb[2] = enemy.hb[0] + 18;	//x2
 		enemy.whb[1] = enemy.hb[3] + 8;		//y1
 		enemy.whb[3] = enemy.hb[3];			//y2
     }
-    if(enemy.direc == 1) // key a
+    if(enemy.direc == 1) //Right follow
     {
 		enemy.whb[0] = enemy.hb[0] - 8;		//x1
 		enemy.whb[2] = enemy.hb[0];   		//x2
 		enemy.whb[1] = enemy.hb[1] + 14; 	//y1
 		enemy.whb[3] = enemy.hb[1] + 18;	//y2
 	}
-	if(enemy.direc == 2) // key d
+	if(enemy.direc == 2) //Left follow
 	{
 		enemy.whb[0] = enemy.hb[2] + 8;		//x1
 		enemy.whb[2] = enemy.hb[2];   		//z2
 		enemy.whb[1] = enemy.hb[1] + 14; 	//y1
 		enemy.whb[3] = enemy.hb[1] + 18;	//y2
 	}
-	if(enemy.direc == 3) // key w
+	if(enemy.direc == 3) //Up follow
 	{
 		enemy.whb[0] = enemy.hb[0] + 14;	//x1
 		enemy.whb[2] = enemy.hb[0] + 18;	//x2
@@ -111,40 +111,40 @@ void enemyValues ()
 }
 void bossValues ()
 {
-	boss.hb[2] = boss.hb[0] + 64; //x2
-	boss.hb[3] = boss.hb[1] + 64; //y2
+	boss.hb[2] = boss.hb[0] + 64; 	//x2 actualization
+	boss.hb[3] = boss.hb[1] + 64; 	//y2 actualization
 	boss.hp[1] = boss.hb[0];		//enemy lifebar & lifebox x1
 	boss.hp[2] = boss.hb[1] - 8;	//enemy lifebar & lifebox y1
 	boss.hp[3] = boss.hp[1] + 64;	//enemy lifebox x2
-	boss.hp[4] = boss.hp[2] + 4;  //enemy lifebar & lifebox y2
+	boss.hp[4] = boss.hp[2] + 4; 	//enemy lifebar & lifebox y2
 	//weapon direction
-	if(boss.direc == 0) // key s
+	if(boss.direc == 0) //down follow
 	{
 		boss.whb[0] = boss.hb[0] + 28;	//x1
 		boss.whb[2] = boss.hb[0] + 36;	//x2
-		boss.whb[1] = boss.hb[3] + 16;		//y1
-		boss.whb[3] = boss.hb[3];			//y2
+		boss.whb[1] = boss.hb[3] + 16;	//y1
+		boss.whb[3] = boss.hb[3];		//y2
     }
-    if(boss.direc == 1) // key a
+    if(boss.direc == 1) //right follow
     {
-		boss.whb[0] = boss.hb[0] - 16;		//x1
-		boss.whb[2] = boss.hb[0];   		//x2
+		boss.whb[0] = boss.hb[0] - 16;	//x1
+		boss.whb[2] = boss.hb[0];   	//x2
 		boss.whb[1] = boss.hb[1] + 28; 	//y1
 		boss.whb[3] = boss.hb[1] + 36;	//y2
 	}
-	if(boss.direc == 2) // key d
+	if(boss.direc == 2) //left follow
 	{
-		boss.whb[0] = boss.hb[2] + 16;		//x1
-		boss.whb[2] = boss.hb[2];   		//z2
+		boss.whb[0] = boss.hb[2] + 16;	//x1
+		boss.whb[2] = boss.hb[2];   	//z2
 		boss.whb[1] = boss.hb[1] + 28; 	//y1
 		boss.whb[3] = boss.hb[1] + 36;	//y2
 	}
-	if(boss.direc == 3) // key w
+	if(boss.direc == 3) //up follow
 	{
 		boss.whb[0] = boss.hb[0] + 28;	//x1
 		boss.whb[2] = boss.hb[0] + 36;	//x2
-		boss.whb[1] = boss.hb[1] - 16;		//y1
-		boss.whb[3] = boss.hb[1];			//y2
+		boss.whb[1] = boss.hb[1] - 16;	//y1
+		boss.whb[3] = boss.hb[1];		//y2
 	}		
 }
 void npcValues()
@@ -248,7 +248,7 @@ void boss_pursuit(int bj)
 	}
 	return;
 }
-void move()
+void move() //actualization of player values for the blit of the correct frame of the animation
 {
 	if(key[KEY_W] && player.hb[1] > 4)
 		{
@@ -276,32 +276,32 @@ void move()
 		}
 		return;
 }
-void enemyAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
+void enemyAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer) //enemy following and his weapong hitbox 
 {
 	if(getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072)
 	{
-		if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 0))//s
+		if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 0))//facing down
 		{
 			rectfill(buffer, enemy.whb[0], enemy.whb[1] + 4, enemy.whb[2], enemy.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, enemy.hb[0], enemy.hb[3], 32, 32);
 			player.hb[1] += 32;
 		}
-		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 1))//a
+		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 1))//facing right
 		{
 			rectfill(buffer, enemy.whb[0] - 4, enemy.whb[1], enemy.whb[2], enemy.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, enemy.hb[0] - 40, enemy.hb[1], 32, 32);
 			player.hb[0] -= 32;
 		}
-		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 2))//d
+		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 2))//facing left
 		{
 			rectfill(buffer, enemy.whb[0] + 4, enemy.whb[1], enemy.whb[2], enemy.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, enemy.hb[2], enemy.hb[1], 32, 32);
 			player.hb[0] += 32;
 		}
-		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 3))//w
+		else if((getpixel(hitbox, enemy.whb[0], enemy.whb[1]) == 0xff0072) && (enemy.direc == 3))//facing up
 		{
 			rectfill(buffer, enemy.whb[0], enemy.whb[1] - 4, enemy.whb[2], enemy.whb[3], 0xD7D1D1);
 			rest(30);
@@ -314,11 +314,11 @@ void enemyAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
 	}
 	return;
 }
-void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa)
+void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa) //Player weapon sistem and his range
 {
 	if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (key[KEY_P]))
 	{
-		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 0))//s
+		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 0))//facing down
 		{
 			rectfill(buffer, player.whb[0], player.whb[1] + 4, player.whb[2], player.whb[3], 0xD7D1D1);
 			rest(30);
@@ -332,7 +332,7 @@ void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa)
 				enemy.hb[1] += 32;
 			}
 		}
-		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 1))//a
+		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 1))//facing right
 		{
 			rectfill(buffer, player.whb[0] - 4, player.whb[1], player.whb[2], player.whb[3], 0xD7D1D1);
 			rest(30);
@@ -347,7 +347,7 @@ void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa)
 				enemy.hb[0] -= 32;
 			}
 		}
-		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 2))//d
+		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 2))//facing left
 		{
 			rectfill(buffer, player.whb[0] + 4, player.whb[1], player.whb[2], player.whb[3], 0xD7D1D1);
 			rest(30);
@@ -361,7 +361,7 @@ void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa)
 				enemy.hb[0] += 32;
 			}
 		}
-		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 3))//w
+		if((getpixel(hitbox, player.whb[0], player.whb[1]) == 0x00FFFF) && (player.direc == 3))//facing up
 		{
 			rectfill(buffer, player.whb[0], player.whb[1] - 4, player.whb[2], player.whb[3], 0xD7D1D1);
 			rest(30);
@@ -386,32 +386,32 @@ void playerAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer, int mapa)
 	}
 	return;
 }
-void bossAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
+void bossAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer) //boss weapon hitbox and damage for the player
 {
 	if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072))
 	{
-		if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 0))//s
+		if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 0))//facing down
 		{
 			rectfill(buffer, boss.whb[0], boss.whb[1] + 4, boss.whb[2], boss.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, boss.hb[0], boss.hb[3], 32, 32);
 			player.hb[1] += 16;
 		}
-		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 1))//a
+		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 1))//facing right
 		{
 			rectfill(buffer, boss.whb[0] - 4, boss.whb[1], boss.whb[2], boss.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, boss.hb[0], boss.hb[3], 32, 32);
 			player.hb[0] -= 16;
 		}
-		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 2))//d
+		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 2))//facing left
 		{
 			rectfill(buffer, boss.whb[0] - 4, boss.whb[1], boss.whb[2], boss.whb[3], 0xD7D1D1);
 			rest(30);
 			masked_blit(ataque, buffer, 64, 0, boss.hb[0], boss.hb[3], 32, 32);
 			player.hb[0] += 16;
 		}
-		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 3))//w
+		else if((getpixel(hitbox, boss.whb[0], boss.whb[1]) == 0xff0072) && (boss.direc == 3))//facing up
 		{
 			rectfill(buffer, boss.whb[0], boss.whb[1] - 4,boss.whb[2], boss.whb[3], 0xD7D1D1);
 			rest(30);
@@ -424,6 +424,7 @@ void bossAttack(BITMAP *hitbox, BITMAP *ataque, BITMAP *buffer)
 	}
 	return;
 }
+
 /*Verification of your position in map*/
 int position () 
 {
@@ -438,42 +439,46 @@ int position ()
 	}
 	return posValue;
 }
-/*Border check*/
+
 /*************************************MAIN**********************************************/
 int main() 
 {	
 	allegro_init();
 	
-	//Pre-settings
+//Pre-settings
 	install_keyboard();
 	set_color_depth(32);
 	set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0);
-	//BMP declaration 
+	
+//BMP declaration 
 	BITMAP *buffer = create_bitmap(800, 600);
 	BITMAP *hitbox = create_bitmap(800, 600);
 	BITMAP *textos = create_bitmap(341, 91);
 	BITMAP *dialogos = create_bitmap(341, 91);
-	//Fondos y choques
-	BITMAP *fondo1 = load_bmp("Map001.bmp", NULL);//mapa
-	BITMAP *fondo2 = load_bmp("Map002.bmp", NULL);//mapa
-	BITMAP *fondo3 = load_bmp("Map003.bmp", NULL);//mapa
-	BITMAP *fondo4 = load_bmp("Map004.bmp", NULL);//mapa
-	BITMAP *fondo5 = load_bmp("Map005.bmp", NULL);//mapa
-	BITMAP *fondo6 = load_bmp("Map006.bmp", NULL);//mapa
-	BITMAP *fondo7 = load_bmp("Map007.bmp", NULL);//mapa
-	BITMAP *choque1 = load_bmp("Choque001.bmp", NULL);// hitboxes mapa
-	BITMAP *choque2 = load_bmp("Choque002.bmp", NULL);// hitboxes mapa
-	BITMAP *choque3 = load_bmp("Choque003.bmp", NULL);// hitboxes mapa
-	BITMAP *choque4 = load_bmp("Choque004.bmp", NULL);// hitboxes mapa
-	BITMAP *choque5 = load_bmp("Choque005.bmp", NULL);// hitboxes mapa
-	BITMAP *choque6 = load_bmp("Choque006.bmp", NULL);// hitboxes mapa
-	BITMAP *choque7 = load_bmp("Choque007.bmp", NULL);// hitboxes mapa
-	BITMAP *menu = load_bmp("Universe.bmp",NULL);
-	BITMAP *instrucciones = load_bmp("Instrucciones.bmp", NULL);
-	BITMAP *creditos = load_bmp("Creditos.bmp", NULL);
-	BITMAP *muerte = load_bmp("Dead.bmp", NULL);
-	//Dialogos
-	BITMAP *M1D1 = load_bmp("M1D1.bmp", NULL);
+	
+//Fondos y choques
+	BITMAP *fondo1 = load_bmp("Map001.bmp", NULL);//mapa 1
+	BITMAP *fondo2 = load_bmp("Map002.bmp", NULL);//mapa 2
+	BITMAP *fondo3 = load_bmp("Map003.bmp", NULL);//mapa 3
+	BITMAP *fondo4 = load_bmp("Map004.bmp", NULL);//mapa 4
+	BITMAP *fondo5 = load_bmp("Map005.bmp", NULL);//mapa 5
+	BITMAP *fondo6 = load_bmp("Map006.bmp", NULL);//mapa 6
+	BITMAP *fondo7 = load_bmp("Map007.bmp", NULL);//mapa 7
+	
+	BITMAP *choque1 = load_bmp("Choque001.bmp", NULL);// hitboxes mapa 1
+	BITMAP *choque2 = load_bmp("Choque002.bmp", NULL);// hitboxes mapa 2
+	BITMAP *choque3 = load_bmp("Choque003.bmp", NULL);// hitboxes mapa 3
+	BITMAP *choque4 = load_bmp("Choque004.bmp", NULL);// hitboxes mapa 4
+	BITMAP *choque5 = load_bmp("Choque005.bmp", NULL);// hitboxes mapa 5
+	BITMAP *choque6 = load_bmp("Choque006.bmp", NULL);// hitboxes mapa 6
+	BITMAP *choque7 = load_bmp("Choque007.bmp", NULL);// hitboxes mapa 7
+	
+	BITMAP *menu = load_bmp("Universe.bmp",NULL); //initial background
+	BITMAP *instrucciones = load_bmp("Instrucciones.bmp", NULL); //player instructions
+	BITMAP *creditos = load_bmp("Creditos.bmp", NULL); //credits of the creators
+	BITMAP *muerte = load_bmp("Dead.bmp", NULL); //the fatal message
+//Dialogos
+	BITMAP *M1D1 = load_bmp("M1D1.bmp", NULL); 
 	BITMAP *M1D2 = load_bmp("M1D2.bmp", NULL);
 	
 	BITMAP *M2D1 = load_bmp("M2D1.bmp", NULL);
@@ -496,7 +501,7 @@ int main()
 	BITMAP *M4D4 = load_bmp("M4D4.bmp", NULL);
 		
 	BITMAP *dialogo = load_bmp("Dialogo.bmp", NULL);
-	//Player & Enemy
+//Player & Enemy
  	BITMAP *personaje  = load_bmp("Francis.bmp",NULL);//Fracis pancho
  	BITMAP *aldeano = load_bmp("Viejito.bmp", NULL);
  	BITMAP *lidia = load_bmp("Random1.bmp", NULL);
@@ -506,12 +511,12 @@ int main()
  	BITMAP *ataque = load_bmp("Hit.bmp", NULL);
  	BITMAP *arma = load_bmp("Arma.bmp", NULL);
  	
- 	//HUD elements 
+//HUD elements 
  	BITMAP *icons = load_bmp("Icons.bmp", NULL);
  	BITMAP *pjicon = load_bmp("PJicon.bmp", NULL);
  	BITMAP *numbers = load_bmp("Numbers.bmp", NULL);
  	
- 	//initial coords
+//initial coords
  	player.xlog[0] = 364;
  	player.ylog[0] = 536;
  	player.xlog[1] = 400;
@@ -525,8 +530,8 @@ int main()
 	player.xlog[5] = 12;
  	player.ylog[5] = 310;	
  	player.xlog[6] = 374;
- 	player.ylog[6] = 535;
-	//Variable declarations
+	player.ylog[6] = 535;
+//Variable declarations
 	clear_to_color(buffer, 0x000000);
 	int ax, ay, ex, ey, bx, by, k = 0, h = 0, eh = 0, i = 0, j = 0, bj = 0, aip = 0, talk = 0;
 	
@@ -588,18 +593,16 @@ int main()
 	enemyValues();
 	npcValues();
 	
-	//First print
+//First print
 	rectfill(buffer, player.hp[1], player.hp[2], player.hp[1] + player.hp[0], player.hp[4], 0xb70909); // life bar
 	rect(buffer, player.hp[1], player.hp[2], player.hp[3], player.hp[4], 0xffffff); // life bord
 	rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
 	rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
 	rectfill(hitbox, player.hb[0], player.hb[1], player.hb[2], player.hb[3], 0xff0072); // player hitbox
-	//rectfill(hitbox, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF); //player-weapon hitbox
 	rectfill(hitbox, enemy.hb[0], enemy.hb[1], enemy.hb[2], enemy.hb[3], 0x00FFFF); // enemy hitbox
-	//rectfill(hitbox, enemy.whb[0], enemy.whb[1], enemy.whb[2], enemy.whb[3], 0x0026FF); //enemy-weapon hitbox
 	rectfill(hitbox, npc1.hb[0], npc1.hb[1], npc1.hb[2], npc1.hb[3], 0xFF6A00); //npc hitbox
 	rectfill(hitbox, boss.hb[0], boss.hb[1], boss.hb[2], boss.hb[3], 0x00FFFF);// boss Hitbox
-	//rectfill(hitbox, boss.whb[0], boss.whb[1], boss.whb[2], boss.whb[3], 0x0026FF);//boss-weapon Hitbox
+				rectfill(hitbox, boss.whb[0], boss.whb[1], boss.whb[2], boss.whb[3], 0x0026FF);//boss-weapon Hitbox
 	rectfill(buffer, boss.hp[1], boss.hp[2], boss.hp[1] + boss.hp[0], boss.hp[4], 0xb70909); // life bar of enemy
 	rect(buffer, boss.hp[1], boss.hp[2], boss.hp[3], boss.hp[4], 0xffffff); // life bord of enemy
 	
@@ -647,21 +650,14 @@ int main()
 		clear_to_color(buffer, 0xaaaaaa);
 		rectfill(hitbox, player.hb[0], player.hb[1], player.hb[2], player.hb[3], 0xff0072);//player
 		rectfill(hitbox, enemy.hb[0], enemy.hb[1], enemy.hb[2], enemy.hb[3], 0x00FFFF); // enemy hitbox
-		//rectfill(hitbox, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
-		//rectfill(hitbox, enemy.whb[0], enemy.whb[1], enemy.whb[2], enemy.whb[3], 0x0026FF);
 		rectfill(hitbox, npc1.hb[0], npc1.hb[1], npc1.hb[2], npc1.hb[3], 0xFF6A00);	
 		rectfill(hitbox, boss.hb[0], boss.hb[1], boss.hb[2], boss.hb[3], 0x00FFFF);// boss Hitbox
-		//rectfill(hitbox, boss.whb[0], boss.whb[1], boss.whb[2], boss.whb[3], 0x0026FF);//boss-weapon Hitbox
+					rectfill(hitbox, boss.whb[0], boss.whb[1], boss.whb[2], boss.whb[3], 0x0026FF);//boss-weapon Hitbox
 //*********************MOVE**************************************************************
 		move();
 		posValue = position();
 //**************************LIMITS*******************************************************
-		/*if((getpixel(hitbox, player.hb[0] -5, player.hb[1] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[2] - 5, player.hb[1] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[0] - 5, player.hb[3] - 5) == 0x00FFFF) || (getpixel(hitbox, player.hb[2] - 5, player.hb[3] - 5) == 0x00FFFF))
-		{
-			player.hb[0] = ax;
-			player.hb[1] = ay;s
-		}*/
-		if((getpixel(hitbox, player.hb[0], player.hb[3]) == 0xFF6A00) || (getpixel(hitbox, player.hb[2], player.hb[3]) == 0xFF6A00))
+		if((getpixel(hitbox, player.hb[0], player.hb[3]) == 0xFF6A00) || (getpixel(hitbox, player.hb[2], player.hb[3]) == 0xFF6A00) || (getpixel(hitbox, player.hb[2], player.hb[1]) == 0xFF6A00)|| (getpixel(hitbox, player.hb[0], player.hb[1]) == 0xFF6A00))
 		{
 			player.hb[0] = ax;
 			player.hb[1] = ay;
@@ -762,14 +758,13 @@ int main()
 			masked_blit(aldeano, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if((enemy.hp[0] > 0)) // Idea: Make the enemy invisible until we talk with the NPC
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
-				// rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
-				// rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
+				rectfill(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[1] + enemy.hp[0], enemy.hp[4], 0xb70909); // life bar of enemy
+				rect(buffer, enemy.hp[1], enemy.hp[2], enemy.hp[3], enemy.hp[4], 0xffffff); // life bord of enemy
 			}
 			if((talk == 1) && (player.hp[0] > 0))
 			{
@@ -897,7 +892,7 @@ int main()
 								if(!key[KEY_0])
 								{
 									masked_blit(M2D5, buffer, 0, 0, 37, 480, 341, 91);
-									player.potion += 9;
+									player.potion += 5;
 									blit(buffer, screen,  0, 0, 0, 0,  800, 600);
 									readkey();
 									clear_keybuf();
@@ -1038,7 +1033,7 @@ int main()
 					player.hb[1] = 550;
 					npc1.hb[0] = 264;
 					npc1.hb[1] = 141;
-					player.potion += 2;
+					player.potion += 4;
 					if(player.hp[0] < 20)
 					{
 						player.hp[0] = 30;
@@ -1101,7 +1096,6 @@ int main()
 			masked_blit(lidia, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF); // weapon
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if(enemy.hp[0] > 0)
@@ -1152,7 +1146,6 @@ int main()
 			masked_blit(capitan, buffer, 0, 0, npc1.hb[0], npc1.hb[1], 32, 32);
 			if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if(enemy.hp[0] > 0)
@@ -1167,7 +1160,6 @@ int main()
 				textout_ex(textos, font, "¡cof!, ¡cof!", 0, 4, 0xFFFFFF, 0x000000);
 				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
-				//blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
 			}
 			if(enemy.hp[0] == 0)
 		    {
@@ -1251,24 +1243,23 @@ int main()
 		{
 			masked_blit(choque5, buffer, 0, 0, 0, 0, 800, 600);
 			masked_blit(fondo5, buffer, 0, 0, 0, 0, 800, 600);
-			//masked blit of player1
+//masked blit of player1
 			if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}	    	
 			if(enemy.hp[0] > 0)
 	   		{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			//cambio de mapa
+//cambio de mapa
 			if((talk == 1) && (player.hp[0] > 0))
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
-			//cambio de mapa
+//cambio de mapa
 			if (enemy.hp[0] == 0)
 			{
 				if(getpixel(choque5, player.hb[0], player.hb[3]) == 0x00FFFF)
@@ -1293,8 +1284,8 @@ int main()
 					talk = 1;
 					j = 0;
 					enemy.hp[0] = 0;
-					enemy.hb[0] = 383;
-					enemy.hb[1] = 253;
+					enemy.hb[0] = 0;
+					enemy.hb[1] = 0;
 				}
 			}
 		}
@@ -1302,11 +1293,10 @@ int main()
 		if(mapa == 6)
 		{
 			masked_blit(choque6, buffer, 0, 0, 0, 0, 800, 600);
-			//masked_blit(fondo6, buffer, 0, 0, 0, 0, 800, 600);
+			masked_blit(fondo6, buffer, 0, 0, 0, 0, 800, 600);
 			//masked blit of player1
 			if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if(enemy.hp[0] > 0)
@@ -1328,6 +1318,7 @@ int main()
 					mapa = 7;
 					player.hb[0] = 374;
 					player.hb[1] = 535;
+					player.potion += 2;
 					if(talk == 1)
 					{
 						talk = 1;
@@ -1356,7 +1347,6 @@ int main()
 			//masked blit of player1
 	    	if(player.hp[0] > 0)
 			{
-				//rectfill(buffer, player.whb[0], player.whb[1], player.whb[2], player.whb[3], 0x0026FF);
 	   			masked_blit(personaje, buffer, player.anima[k], player.visdir[player.direc], player.hb[0], player.hb[1], 32, 32);   //Player
 			}
 			if(boss.hp[0] != 0)
@@ -1383,8 +1373,7 @@ int main()
 			}
 		}
 //****************************HUD IMPRESSION*********************************************
-		/* The numbers need to change depending on the cures and the gold.
-		   We need a system for both 													*/
+/*The number changes with your inventory*/
 		masked_blit(pjicon, buffer, 0, 0, 10, 14, 60, 60); //Icon of Character
 		masked_blit(icons, buffer, 0, 0, 84, 41, 32, 32); //Potion icon
 		
@@ -1513,9 +1502,59 @@ int main()
     	clear_bitmap(hitbox);
     }
     //Close of program
-    destroy_bitmap(choque1);
-    destroy_bitmap(fondo1);
     destroy_bitmap(buffer);
+ 	destroy_bitmap(hitbox);
+ 	destroy_bitmap(textos);
+	destroy_bitmap(dialogos );
+	destroy_bitmap(fondo1);
+	destroy_bitmap(fondo2);
+	destroy_bitmap(fondo3);
+ 	destroy_bitmap(fondo4);
+ 	destroy_bitmap(fondo5);
+ 	destroy_bitmap(fondo6);
+ 	destroy_bitmap(fondo7 );
+ 	destroy_bitmap(choque1);
+ 	destroy_bitmap(choque2);
+ 	destroy_bitmap(choque3);
+ 	destroy_bitmap(choque4);
+ 	destroy_bitmap(choque5);
+ 	destroy_bitmap(choque6);
+ 	destroy_bitmap(choque7);
+ 	destroy_bitmap(menu);
+ 	destroy_bitmap(instrucciones );
+ 	destroy_bitmap(creditos);
+ 	destroy_bitmap(muerte);
+ 	destroy_bitmap(M1D1 );
+ 	destroy_bitmap(M1D2 );
+ 	destroy_bitmap(M2D1 );
+ 	destroy_bitmap(M2D2 );
+ 	destroy_bitmap(M2D3 );
+ 	destroy_bitmap(M2D4 );
+ 	destroy_bitmap(M2D5 );
+ 	destroy_bitmap(M2D6 );
+ 	destroy_bitmap(M2D7 );
+ 	destroy_bitmap(M2D8 );
+ 	destroy_bitmap(M2D9 );
+ 	destroy_bitmap(M2D10);
+ 	destroy_bitmap(M2D11);
+ 	destroy_bitmap(M2D12);
+ 	destroy_bitmap(M2D13 );
+ 	destroy_bitmap(M4D1 );
+ 	destroy_bitmap(M4D2 );
+ 	destroy_bitmap(M4D3 );
+ 	destroy_bitmap(M4D4 );
+ 	destroy_bitmap(dialogo );
+  	destroy_bitmap(personaje);
+  	destroy_bitmap(aldeano);
+  	destroy_bitmap(lidia);
+  	destroy_bitmap(capitan);
+  	destroy_bitmap(enemigo);
+  	destroy_bitmap(jefe);
+  	destroy_bitmap(ataque);
+  	destroy_bitmap(arma);
+  	destroy_bitmap(icons);
+  	destroy_bitmap(pjicon );
+  	destroy_bitmap(numbers);
 	return 0;
 }
 END_OF_MAIN();
