@@ -513,8 +513,8 @@ int main()
  	//initial coords
  	player.xlog[0] = 364;
  	player.ylog[0] = 536;
- 	player.xlog[1] = 440;
- 	player.ylog[1] = 560;
+ 	player.xlog[1] = 400;
+ 	player.ylog[1] = 300;
  	player.xlog[2] = 330;
  	player.ylog[2] = 550;
 	player.xlog[3] = 510;
@@ -666,7 +666,7 @@ int main()
 			player.hb[1] = ay;
 		}
 		if(mapa == 1)
-			if((getpixel(choque1, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque1, player.hb[2], player.hb[3])== 0xFFFFFF))
+			if((getpixel(choque1, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque1, player.hb[2], player.hb[3])== 0xFFFFFF) || (getpixel(choque1, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque1, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -678,7 +678,7 @@ int main()
 				player.hb[1] = player.ylog[0];
 			}
 		if(mapa == 2)
-			if((getpixel(choque2, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque2, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque2, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque2, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque2, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque2, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -690,7 +690,7 @@ int main()
 				player.hb[1] = player.ylog[1];
 			}
 		if(mapa == 3)
-			if((getpixel(choque3, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque3, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque3, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque3, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque3, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque3, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -703,7 +703,7 @@ int main()
 			}
 		if(mapa == 4)
 		{
-			if((getpixel(choque4, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque4, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque4, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque4, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque4, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque4, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -718,7 +718,7 @@ int main()
 			}
 		}
 		if(mapa == 5)
-			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque5, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque5, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque5, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -730,7 +730,7 @@ int main()
 				player.hb[1] = player.ylog[4];
 			}
 		if(mapa == 6)
-			if((getpixel(choque6, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque6, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque6, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque6, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque6, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque6, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -742,7 +742,7 @@ int main()
 				player.hb[1] = player.ylog[5];
 			}
 		if(mapa == 7)
-			if((getpixel(choque7, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque7, player.hb[2], player.hb[3]) == 0xFFFFFF))
+			if((getpixel(choque7, player.hb[0], player.hb[3]) == 0xFFFFFF) || (getpixel(choque7, player.hb[2], player.hb[3]) == 0xFFFFFF) || (getpixel(choque7, player.hb[0], player.hb[1])== 0xFFFFFF) || (getpixel(choque7, player.hb[2], player.hb[1])== 0xFFFFFF))
 			{
 				player.hb[0] = ax;
 				player.hb[1] = ay;
@@ -816,8 +816,8 @@ int main()
 				if((getpixel(choque1, player.hb[0], player.hb[1]) == 0x00FFFF) && talk == 1)
 				{
 					mapa = 2;
-					player.hb[0] = player.xlog[1];
-					player.hb[1] = player.ylog[1];
+					player.hb[0] = 440;
+					player.hb[1] = 560;
 					npc1.hb[0] = 413;
 					npc1.hb[1] = 492;
 					if(talk == 1)
@@ -1158,7 +1158,7 @@ int main()
 	    	{
 				masked_blit(enemigo, buffer, enemy.anima[h], enemy.visdir[enemy.direc], enemy.hb[0], enemy.hb[1], 32, 32);   //Enemy
 			}
-			if (talk == 0)
+			if (talk == 0 && enemy.hp[0] > 0)
 			{
 				enemy_pursuit(j);
 				enemyAttack(hitbox, ataque, buffer);
@@ -1167,13 +1167,13 @@ int main()
 				textout_ex(textos, font, "¡Los derrotare!", 0, 14, 0xFFFFFF, 0x000000);
 				masked_blit(textos, buffer,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
 				//blit(textos, screen,  0, 0, npc1.hb[2] + 15, npc1.hb[1] - 20, 122, 25);
-				if(enemy.hp[0] > 0)
-		    	{
-					clear_bitmap(textos);
-				}
+			}
+			if(enemy.hp[0] == 0)
+		    {
+				clear_bitmap(textos);
 			}
 			//************Interact I*****************************************************
-			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0))
+			while ((getpixel(hitbox, player.whb[0], player.whb[1]) == 0xFF6A00) && (!key[KEY_O]) && (talk == 0) && enemy.hp[0] == 0)
 			{
 				clear_bitmap(textos);
 				textout_ex(textos, font, "O para", 24, 4, 0xFFFFFF, 0x000000);
@@ -1225,20 +1225,23 @@ int main()
 				clear_bitmap(textos);
 			}
 			//cambio de mapa
-			if(getpixel(choque4, player.hb[0], player.hb[1]) == 0xFF00FF)
+			if(enemy.hp[0] == 0)
 			{
-				mapa = 2;
-				player.hb[0] = 626;
-				player.hb[1] = 555;
-				npc1.hb[0] = 413;
-				npc1.hb[1] = 492;
-				if(player.hp[0] < 20)
+				if(getpixel(choque4, player.hb[0], player.hb[1]) == 0xFF00FF)
 				{
-					player.hp[0] = 30;
-				}
-				if(talk == 1)
-				{
-					talk = 4;
+					mapa = 2;
+					player.hb[0] = 626;
+					player.hb[1] = 555;
+					npc1.hb[0] = 413;
+					npc1.hb[1] = 492;
+					if(player.hp[0] < 20)
+					{
+						player.hp[0] = 30;
+					}
+					if(talk == 1)
+					{
+						talk = 4;
+					}
 				}
 			}
 		}
@@ -1366,13 +1369,16 @@ int main()
 				playerAttack(hitbox, ataque, buffer, mapa);
 			}
 			//cambio de mapa
-			if(getpixel(choque7, player.hb[2], player.hb[3]) == 0xFF0000)
+			if(enemy.hp[0] == 0)
 			{
-				mapa = 6;
-				talk = 3;
-				player.hb[0] = 466;
-				player.hb[1] = 36;
-				enemy.hp[0] = 0;
+				if(getpixel(choque7, player.hb[2], player.hb[3]) == 0xFF0000)
+				{
+					mapa = 6;
+					talk = 3;
+					player.hb[0] = 466;
+					player.hb[1] = 36;
+					enemy.hp[0] = 0;
+				}
 			}
 		}
 //****************************HUD IMPRESSION*********************************************
