@@ -1,6 +1,6 @@
 [Project]
-FileName=BossBattleTested.dev
-Name=BossBattleTested
+FileName=MainWhile Game.dev
+Name=MainWhile Game
 UnitCount=1
 Type=0
 Ver=1
@@ -14,7 +14,7 @@ Compiler=
 CppCompiler=
 Linker=-lallegro-4.4.2-monolith-mt
 IsCpp=1
-Icon=BossBattleTested.ico
+Icon=MainWhile Game.ico
 ExeOutput=
 ObjectOutput=
 OverrideOutput=0
@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=
 
 [Unit1]
-FileName=BossBattleTested.cpp
+FileName=Swords and laser.cpp
 CompileCpp=1
 Folder=
 Compile=1
